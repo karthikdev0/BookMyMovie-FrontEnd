@@ -1,0 +1,129 @@
+ <!-- <div class="row">
+   <div class="col-md-2">
+     
+   </div>
+    <div class="col-md-6 mb-10 mt-10 col-lg-12" >
+    <mat-card >
+        <mat-card-title class="text-success">Ticket Booked successfully</mat-card-title>
+        <mat-card-content class="mat-body" >
+          <div>Booking Id:    {{ticket.bookingId}}</div>
+          <div>TicketId :      {{ticket.ticketId}}</div>
+          <div>FullName :      {{ticket.fullName}}</div>
+          <div>Movie Title:    {{ticket.title}}</div>
+          <div>Theatre Name:   {{ticket.theatreName}}</div>
+          <div>Theatre City:   {{ticket.theatreCity}}</div>
+          <div>Number of seats:{{ticket.numOfSeats}}</div>
+          <div>Seat Number :  {{ticket.seatNumber}}</div>
+          <div>Seat Class: {{ticket.seatClass}}</div>
+          <div>Price :         {{ticket.price}}</div>
+          <div> Movie Date:  {{ticket.screenDate | date:'dd-MM-yyyy'}}</div>
+          <div>Movie Start Time : {{ticket.screenTimeStart | date:'h:mm a'}}</div>
+          <div>Movie EndTime : {{ticket.screenTimeEnd | date:'h:mm a'}}</div>
+          <div> Created Date:  {{ticket.createdDate | date:'dd-MM-yyyy'}}</div>
+
+        </mat-card-content>
+        <mat-card-footer>
+          <a class="mb-10 ml-10" style="text-align: center; margin-bottom: 10px; margin-left: 10px;" mat-raised-button color="primary"  (click)="takeMetoDashBoard()" >Dashboard</a>
+        </mat-card-footer>
+      </mat-card> 
+    </div>
+</div> --> 
+
+
+ <div class="row">
+  <div class="col-md-12">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Thank you for using BookMyMovie
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="ticket-border">
+          <div class="row">
+            <div class="col-md-2" ></div>
+            <div class="col-md-8">
+              <div>
+                <div><strong>Dear Customer,your tickets have been confirmed.Please find your booking details below:</strong></div>
+                <div >
+              <!--     <img src="#" alt="logo"> -->
+                  <div style="display: inline-block;">
+                    <div class="mat-h3" style="text-transform: capitalize;">
+                      {{ticket.title}}
+                    </div>
+                    
+                    <div class="mat-h3" style="text-transform: capitalize;">
+                      {{ticket.theatreName}}:{{ticket.screenName}},{{ticket.theatreCity}}
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div>
+                      <span class="mat-body">Booking ID : </span>
+                      <span class="mat-body-strong">{{ticket.bookingId}}</span>
+                    </div>
+                    <div>
+                      <span class="mat-body">Show Time : </span>
+                      <span class="mat-body-strong">{{ticket.screenTimeStart | date:'h:mm a'}}</span>
+                    </div>
+                    <div>
+                      <span class="mat-body">Date of Show : </span>
+                      <span class="mat-body-strong">{{ticket.screenDate | date:'dd-MM-yyyy'}}</span>
+                    </div>
+                    <div>
+                      <span class="mat-body">Seat No. : </span>
+                      <span class="mat-body-strong">{{ticket.seatNumber}}</span>
+                    </div>
+                    <div>
+                      <span class="mat-body">Seat Class : </span>
+                      <span class="mat-body-strong">{{ticket.seatClass}}</span>
+                    </div>
+                    <div>
+                      <span class="mat-body">Paymount Mode : </span>
+                      <span class="mat-body-strong">Not applicable</span>
+                    </div>
+                    <div>
+                      <span class="mat-body">Booking Date : </span>
+                      <span class="mat-body-strong">{{ticket.createdDate | date:'dd-MM-yyyy'}}</span>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6">
+                    <div>
+                      <span class="mat-body">Ticket Amount : Rs.</span>
+                      <span class="mat-body-strong">{{ticket.price}}</span>
+                    </div>
+                    <div>
+                      <span class="mat-body">Convenience Charge : Rs.</span>
+                      <span class="mat-body-strong">0.00</span>
+                    </div>
+                    <div>
+                      <span class="mat-body">Discount Amout : Rs.</span>
+                      <span class="mat-body-strong">0.00</span>
+                    </div>
+                    <div style="border-top: 2px solid black;border-bottom: 2px solid black;">
+                      <span class="mat-body">Total Amount : Rs.</span>
+                      <span class="mat-body-strong">{{ticket.price}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2"></div> 
+          </div>
+        </div>
+
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="mat-small">
+          <strong>Note:</strong>
+          Tickets Once booked Cannot be exchanged, cancelled or refunded.The credit card and Credit Card Holder
+          must be present at the ticket counter while collecting ticket(s).Please carry a copy of this printout 
+          with you or the Email/SMS confirmation send to you
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
+ 

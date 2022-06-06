@@ -1,0 +1,28 @@
+
+
+<h4 style="margin-left: 5px;">Top Reviews</h4>
+
+       <div style="display: inline-block;"   *ngFor="let rate of myReviews">
+              <mat-card  style="margin: 10px;">
+                     <mat-card-title>
+                            <h6> UserName  : {{rate.username}}</h6>
+                     </mat-card-title>
+                     <mat-card-content >
+                            
+                            <strong>Movie Rating  : {{rate.rating}}</strong>
+                            <ngb-rating [max]="5"  [(rate)]="rate.rating" [readonly]="true"></ngb-rating>
+
+                            
+                                   <p class="description-txt" >{{rate.reviewContent.substring(0,100)}}
+                                   <a style="text-decoration: none;" matTooltip= {{rate.reviewContent}} >.....</a>
+                            </p>
+                                  
+                     
+                          
+                     </mat-card-content>
+                    </mat-card> 
+                    <br>      
+              </div>
+       
+
+

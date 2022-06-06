@@ -1,0 +1,58 @@
+
+<!--   <div >
+    <img [src]="createImgPath(movie.posterImgPath)" class="img-fluid rounded-start" alt="movie-poster"> 
+   <div class="card-body">
+     <h5 class="card-title">{{movie.title}}</h5>
+     <p class="card-text">{{movie.description}}</p>
+     <p class="card-text">Tags -- {{movie.tags.replaceAll(',',' ')}}</p>
+     <p class="card-text"><small class="text-muted">Movie Rating  - {{movie.ratings}} , Movie Release Date  - {{movie.releaseDate | date}}</small></p>
+      <a (click) = "redirectToBookingPage(movie)" class="btn btn-primary">Book Ticket</a> 
+   </div>
+ </div>
+ <a  color="primary" mat-raised-button (click)="toggleTheatreDetails()">Theatre Details</a> -->
+
+
+
+<mat-card>
+  <mat-card-content>
+     <div class="row mat-content">
+       <div class="col-md-4">
+        <img class="poster-img" mat-card-xl-image [src]="createImgPath(movie.posterImgPath)" >
+       </div>
+       <div class="col-md-8">
+        <mat-card-title>
+          {{movie.title}}
+        </mat-card-title>
+        <p class="card-text description-txt">{{movie.description}}</p>
+        <p class="card-text">Tags -- {{movie.tags.replaceAll(',',' ')}}</p>
+        <p class="card-text"><small class="text-muted">Movie Rating  - {{movie.ratings}} , Movie Release Date  - {{movie.releaseDate | date}}</small></p>
+        <a mat-button >Rate now</a>
+        <a color="primary" mat-raised-button (click)="openTicketController()" >Book Ticket Now</a>
+       </div>
+     </div>
+  </mat-card-content>
+ <!--  <mat-divider inset></mat-divider>
+   <mat-card-actions>
+    <a color="primary" mat-button (click)="openTicketController()" >Book Ticket Now</a>
+    <a  color="primary"  mat-raised-button (click)="toggleTheatreDetails()">Theatre Details</a>
+    <br>
+    <br>
+  </mat-card-actions>  -->
+</mat-card>
+
+
+<!-- <mat-card style="width: 500px;" [ngStyle]="{'display':toggleTheatreData? 'none':'block'}">
+  <mat-card-title>Theatre Details</mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let data of TheatreData">
+         <span>Name : {{data.theatreName}},  </span>
+         <span>City :{{data.theatreCity}}</span>
+         <p>Total Number of seats left  {{data.totalSeatCount}}</p>
+         <p> silver Seats count {{data.silverSeatCount}} and price  {{data.silverSeatPrice}}</p>
+         <p> Gold Seats count {{data.goldSeatCount}} and price  {{data.goldSeatPrice}}</p>
+         <p> Platinum Seats count {{data.platinumSeatCount}} and price  {{data.platinumSeatPrice}}</p>
+         <hr>
+       </div>
+  
+  </mat-card-content>
+</mat-card> -->

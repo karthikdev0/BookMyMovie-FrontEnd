@@ -1,0 +1,12 @@
+.spacer{
+    flex: 1 1 auto;
+}
+
+mat-card{
+    height: 330px;
+    width: 200px;
+}
+mat-card img{
+    height: 256px;
+    width: 156px;
+}

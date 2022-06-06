@@ -1,0 +1,204 @@
+<mat-card  class="login-card">
+    <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content> 
+        <mat-tab-group>
+           <!--  <mat-tab label="Login">
+                <table style="width: 100%"  cellspacing="10">
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <input  matInput  placeholder="Username" id="username"   name="username" [(ngModel)]="username" required>
+                                </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <input  matInput  placeholder="Password" [(ngModel)]="Tpassword"  type="password"  name="password"  required>
+                                </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                       
+                            <mat-card-actions>
+                                <button  mat-raised-button (click)="login()"  color="primary">Login</button>
+                            </mat-card-actions>
+               
+            </mat-tab> -->
+            <mat-tab label="Login">
+                <mat-card >
+                    <mat-card-title>Login</mat-card-title>
+                    <mat-card-content>
+                      <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
+                        <form [formGroup]="form" (ngSubmit)="loginAuthentication(form)" autocomplete="off">
+                            <div>
+                                <mat-form-field appearance="legacy">
+                                    <mat-label>User Name:</mat-label>
+                                    <input matInput  formControlName="LuserName" placeholder="Your userName">
+                                    <mat-hint>Enter your username </mat-hint>
+                                    <mat-error *ngIf="(form.get('LuserName')).errors?.required">UserName is required</mat-error>
+                                    <mat-error *ngIf="(form.get('LuserName')).errors?.pattern">Please enter valid User Name</mat-error>
+                                </mat-form-field>
+                            </div>
+                
+                            <div>
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Password </mat-label>
+                                    <input matInput [type]="flag ? 'password' : 'text'" placeholder="Enter your password"
+                                        formControlName="Lpassword">
+                                    <mat-icon (click)="flag=!flag" matSuffix>{{ flag ? 'visibility' : 'visibility_off' }}</mat-icon>
+                                    <mat-error>Password is required</mat-error>
+                                    <mat-error *ngIf="(form.get('Lpassword')).errors?.pattern">
+                                        Please enter more than 8 character
+                                    </mat-error>
+                                </mat-form-field>
+                                <br>
+                                <br>
+                            </div>
+                
+                            <div>
+                                <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Login</button>
+                            </div>
+                
+                        </form>
+                      
+                    </mat-card-content>
+                </mat-card>
+            </mat-tab>
+            <mat-tab label="Registration">
+                    
+              <app-register></app-register>
+<!-- 
+                <form  [formGroup]="registrationForm" (ngSubmit)="saveDetails(registrationForm)" class="form-container">
+                    <mat-card>
+                      <mat-card-header>
+                        <mat-card-title>Registration Form</mat-card-title>
+                      
+                      </mat-card-header>
+                      <mat-card-content>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="full-width">
+                              <mat-label>First Name</mat-label>
+                              <input formControlName="firstName" maxlength="15" #nameInput matInput placeholder="First name">
+                              <mat-hint>Mini character 6: {{ nameInput.value.length }}/6</mat-hint>
+                              <mat-error>Name is required</mat-error>
+                              <mat-error *ngIf="(registrationForm.get('firstName'))?.errors?.['minlength']">
+                                  Please enter more than 6 character
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                            <mat-form-field class="full-width">
+                              <mat-label>Last Name</mat-label>
+                              <input formControlName="lastName" matInput placeholder="Last name">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="full-width">
+                              <mat-label>Email Id</mat-label>
+                              <input formControlName="email" matInput placeholder="email Address">
+                              <mat-icon matPrefix>mail_outline</mat-icon>
+                              <mat-hint>Input the fully qualified email address</mat-hint>
+                             
+                                <mat-error *ngIf="(registrationForm.get('email')?.hasError('required'))">Email is required</mat-error>
+                                <mat-error *ngIf="(registrationForm.get('email'))?.errors?.['pattern']">Please enter valid email</mat-error>
+                              
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                              <mat-form-field class="fullwidth">
+                                <mat-label>UserName</mat-label>
+                                <input formControlName="userName" matInput placeholder="username">
+                                <mat-hint>should contain alphanumeric characters and 6 to 20 characters and it should be unique
+                               </mat-hint>
+                                <mat-error *ngIf="(registrationForm.get('userName'))?.errors?.['pattern']">Please enter valid username</mat-error>
+                              </mat-form-field>
+                              <br>
+                          </div>
+                         
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <br>
+                            <mat-form-field >
+                              <mat-label>Password</mat-label>
+                              <input formControlName="password" [type]="hide ? 'password' : 'text'" matInput placeholder="enter password" (change)="onPasswordChange()">
+                              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                           </button>
+                           <mat-hint align="start">atleast 1 capital letter ,1 small letter ,1 special character ,1 number and length must be 
+                              from 8 to 20 characters
+                           </mat-hint>
+                           <mat-error *ngIf="(registrationForm.get('password'))?.errors?.['pattern']">Please enter valid password</mat-error>
+                            </mat-form-field>
+                            <br>
+                          </div>
+                          <div class="col-md-6">
+                            <br>
+                              <mat-form-field class="fullwidth" hintLabel="Password and Confirm Password fields must be equal">
+                                <mat-label>Confirm Password</mat-label>
+                                <input formControlName="confirmPassword" type="password" matInput placeholder="confirm password" (change)="onPasswordChange()">
+                              </mat-form-field>
+                              <span class="invalid" *ngIf="confirm_password.hasError('mismatch')">Password do not match.</span>
+                              <br>
+                          </div>
+                         
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                              <br>
+                              <mat-label>Gender</mat-label>
+                                <mat-radio-group  formControlName="gender" matInput class="margin-left">
+                                    <mat-radio-button value="male"> Male </mat-radio-button>
+                                    <mat-radio-button value="female"> Female </mat-radio-button>
+                                    <mat-radio-button value="ratherNotSay">Rather Not to say</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <div class="col-md-6 top-padding">
+                                <mat-form-field class="full-width" appearance="fill">
+                                    <mat-label>Select DOB</mat-label>
+                                    <input formControlName="dob" matInput [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>                  
+                            </div>
+                        </div>
+                      </mat-card-content>
+                      <mat-card-actions>
+                        <button type="submit"  mat-raised-button color="primary" [disabled]="!registrationForm.valid" >Register</button>
+                      </mat-card-actions>
+                    </mat-card>
+                  </form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>
+
+
+
+
+
+
+
+
+   <!--  <span *ngIf="ngForm.submitted && !registrationForm.valid" class="small-font"
+                        [ngClass]="{'invalid': ngForm.submitted }">* required</span> -->

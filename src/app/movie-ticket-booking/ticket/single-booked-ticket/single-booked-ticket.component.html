@@ -1,0 +1,22 @@
+<mat-card *ngIf="ticket !== undefined">
+    <mat-card-title class="text-success">Booked Ticket Details</mat-card-title>
+    <mat-card-content class="mat-body" >
+      <div>TicketId :      {{ticket.ticketId}}</div>
+      <div>FullName :      {{ticket.fullName}}</div>
+      <div>Movie Title:    {{ticket.title}}</div>
+      <div>Theatre Name:   {{ticket.theatreName}}</div>
+      <div>Theatre City:   {{ticket.theatreCity}}</div>
+      <div>Number of seats:{{ticket.numOfSeats}}</div>
+      <div>Seat Number :  {{ticket.seatNumber}}</div>
+      <div>Seat Class: {{ticket.seatClass}}</div>
+      <div>Price :         {{ticket.price}}</div>
+      <div> Movie Date:  {{ticket.screenDate | date:'dd-MM-yyyy'}}</div>
+      <div>Movie Start Time : {{ticket.screenTimeStart | date:'h:mm a'}}</div>
+      <div>Movie EndTime : {{ticket.screenTimeEnd | date:'h:mm a'}}</div>
+      <div> Created Date:  {{ticket.createdDate | date:'dd-MM-yyyy'}}</div>
+
+    </mat-card-content>
+    <mat-card-footer>
+      <a class="mb-10 ml-10" style="text-align: center; margin-bottom: 10px; margin-left: 10px;" mat-raised-button color="primary"  (click)="takeMetoDashBoard()" >Dashboard</a>
+    </mat-card-footer>
+  </mat-card>

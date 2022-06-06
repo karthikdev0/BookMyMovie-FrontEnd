@@ -1,0 +1,39 @@
+
+<mat-toolbar color="primary"   class="fixed-header">
+    <mat-toolbar-row>
+    <!-- <span><img  src="./assets/logo.png"  style="width:50px;"></span> -->
+    <a  mat-flat-button color="primary"  routerLink="/home"  routerLinkActive="active"><mat-icon>home</mat-icon>Home</a>
+    <a  mat-flat-button color="primary" routerLinkActive="active"   routerLink="/movie-list">Movie-List</a>
+    <a mat-flat-button color="primary" (click)="takeMetoUserDashboard()">DashBoard</a>
+    <span class="example-spacer"></span>
+
+  <div  ngbDropdown class="dropdown">
+  <button ngbDropdownToggle type="button" mat-button  id="dropdownMenuButton1" aria-expanded="false">
+    Welcome  {{username}} <mat-icon>account_circle</mat-icon>
+  </button>
+  <ul  ngbDropdownMenu  aria-labelledby="dropdownMenuButton1">
+    <div *ngIf="!isLoggedIn">
+      <li><a  mat-flat-button  class="dropdown-item" routerLink="/register" *ngIf="!isLoggedIn">Register</a></li>
+      <li><a  mat-flat-button  class="dropdown-item" (click)="isUserAuthenticated()" *ngIf="!isLoggedIn">Login</a></li>
+    </div> 
+    <div *ngIf="isLoggedIn">
+      <li><a  mat-flat-button  class="dropdown-item" (click)="takeMetoUserDashboard()" *ngIf="isLoggedIn">DashBoard</a></li>
+      <li><a  mat-flat-button  class="dropdown-item" (click)="logOut()">Logout</a></li>
+    </div>
+  
+  </ul>
+</div>
+ <!--   <button mat-flat-button color="primary" ><mat-icon>account_circle</mat-icon>
+    <a  mat-flat-button color="primary" class="dropdown-item" >My Account</a>
+        <a  mat-flat-button color="primary" class="dropdown-item" (click)="isUserAuthenticated()">Login/Register</a>   
+        <a  mat-flat-button color="primary" class="dropdown-item" (click)="logOut()">Logout</a>
+        </button>  
+    <a  mat-flat-button color="primary"  (click)="isUserAuthenticated()">Login/Register</a>
+    <a  mat-flat-button color="primary" (click)="logOut()">Logout</a>
+-->
+    </mat-toolbar-row>
+    </mat-toolbar>
+    <main>
+    <router-outlet  style="margin-top: 80px;"></router-outlet>
+    </main>
+<router-outlet></router-outlet>

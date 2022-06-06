@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+body {
+  /*   background-color: #eee; */
+    font-family: "Poppins", sans-serif;
+    font-weight: 300
+}
+
+.height {
+    height: 20vh
+}
+
+.search {
+    position: relative;
+   /*  box-shadow: 0 0 40px rgba(51, 51, 51, .1) ; */
+}
+.container{
+    margin-top: 10px;
+    background-color: white;
+}
+
+.search input {
+    height: 50px;
+    text-indent: 25px;
+     border: 2px solid #d6d4d4 ;
+     /* border-width: 2px;
+     border-style: solid; */
+}
+
+.search input:focus {
+    box-shadow: none;
+    border: 2px solid blue
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 25px;
+    left: 16px
+}
+
+.search button {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    height: 40px;
+    width: 110px;
+   
+}
+
+.search-form {
+    min-width: 150px;
+    max-width: 900px;
+    width: 100%;
+  }
+  
+  .search-full-width {
+    width: 100%;
+  }
+  
+
+  .mat-flat-button ~ .mat-flat-button {
+    margin-left: 10px;
+  }
+
+  .mat-tab { overflow-y: hidden!important}
+
+  mat-card { margin: 0px; padding: 0px;}
+
+  mat-checkbox{
+    margin-left: 10px;
+  }
+

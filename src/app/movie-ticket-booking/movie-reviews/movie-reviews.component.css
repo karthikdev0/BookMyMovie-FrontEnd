@@ -1,0 +1,13 @@
+ngb-rating {
+    color: #FFC107;
+    font-size: 30px;
+}
+
+.description-txt{
+    text-indent: 50px;
+    text-align: justify;
+}
+
+mat-card-content{
+    width: 300px;
+}

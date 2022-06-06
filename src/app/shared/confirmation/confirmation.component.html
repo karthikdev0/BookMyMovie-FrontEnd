@@ -1,0 +1,10 @@
+<h5 mat-dialog-title>Are You Sure?</h5>
+<mat-dialog-content class="fullscreen-dialog" [innerHTML]="mydata" >
+   <!--  <p class="fullscreen-dialog">{{mydata}}</p> -->
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button color="warn" (click)="yesDialog()">YES</button>
+    <button mat-button color="primary" (click)="noDialog()">NO</button>
+</mat-dialog-actions>
+
+

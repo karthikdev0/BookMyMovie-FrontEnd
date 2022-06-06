@@ -1,0 +1,15 @@
+
+<div mat-dialog-title class="dialog-title">
+    <h2 mat-dialog-title>Add the Review</h2>
+    <button mat-icon-button aria-label="close dialog" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+<mat-dialog-content>
+    <app-write-review (isSubmitClicked)="isSubmitClicked($event)" [reviewModel]="data.reviewModel" ></app-write-review>
+</mat-dialog-content>
+<!-- <mat-dialog-actions>
+    <button mat-button  (click)="closeDialog()">Close</button>
+</mat-dialog-actions> -->
+
+

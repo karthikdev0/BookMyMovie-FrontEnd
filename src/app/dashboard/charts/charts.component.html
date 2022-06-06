@@ -1,0 +1,23 @@
+
+<mat-toolbar>
+    <mat-toolbar-row>
+        <mat-button-toggle-group aria-label="charts">
+            <mat-button-toggle routerLink="line-chart" >Total Collection </mat-button-toggle>
+            <mat-button-toggle routerLink="pie-chart"> Total Seats Booked</mat-button-toggle>
+            <mat-button-toggle routerLink="stock-chart">Stock chart</mat-button-toggle>
+        </mat-button-toggle-group>
+<!--         <button [ngStyle]="{'background-color': lineChartTabBtn ? 'blue':''}" 
+        (click)="toggelActiveTab()" mat-button routerLink="line-chart">
+            Total Collection 
+        </button>
+        <button mat-button routerLink="pie-chart">
+           Total Seats Booked
+        </button> -->
+    </mat-toolbar-row>
+</mat-toolbar>
+<!-- <button mat-button color="primary" (click)="switchData()">{{toggleBtn?"Weekly":"Monthly"}}</button>
+
+<div id="chartdiv" [style.width.%]="100" [style.height.px]="500"></div> -->
+
+<router-outlet></router-outlet>
+

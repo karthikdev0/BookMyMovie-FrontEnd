@@ -1,0 +1,80 @@
+<form  autocomplete="off" [formGroup]="movieForm" (ngSubmit)="saveDetails(movieForm)" class="form-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Movie Form</mat-card-title>
+       <!--  <span *ngIf="ngForm.submitted && !registrationForm.valid" class="small-font"
+        [ngClass]="{'invalid': ngForm.submitted }">* required</span> -->
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field  class="full-width">
+              <mat-label>Movie Title</mat-label>
+              <input autocomplete="off" formControlName="title"  #titleInput matInput placeholder="Movie Title">
+              <mat-error>Name is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+<!--             <mat-form-field class="full-width">
+              <mat-label>Ratings</mat-label>
+              <input  value={{rating}} formControlName="ratings" type="number" max="5" min="1" matInput placeholder="Ratings">
+            </mat-form-field> -->
+          </div> 
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field  style="width: 100%;" class="full-width">
+              <mat-label>Description</mat-label>
+              <textarea formControlName="description" matInput placeholder="Write here the movie description ">   </textarea>       
+                <mat-error *ngIf="(movieForm.get('description')?.hasError('required'))">description is required</mat-error>   
+            </mat-form-field>
+          </div>  
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-checkbox [formControl]="disableSelect">All Tags</mat-checkbox>
+                <mat-form-field appearance="fill">
+                  <mat-label>Tags</mat-label>
+                  <mat-select [formControl]="tagsControl" [disabled]="disableSelect.value" multiple>
+                  <mat-option *ngFor="let tag of tagsList" [value]="tag">{{tag}}</mat-option>
+                  </mat-select>
+                  </mat-form-field>
+                <br>
+            </div>
+           
+            <div class="col-md-6 top-padding">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Movie Release Date</mat-label>
+                    <input formControlName="releaseDate" matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>   
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <br>
+                <mat-label>Upload Poster </mat-label>
+                <mat-checkbox [formControl]="disablePosterUpload">keep the previous uploaded file</mat-checkbox>
+                <app-upload [disableField]=" disablePosterUpload.value" (onUploadFinished)="uploadFinished($event)"></app-upload>
+            </div>
+            <div class="col-md-6"> 
+              <div *ngIf="disablePosterUpload.value">previously uploaded movie poster 
+                <img   width="100px" height="150px"  [src]="returnImgPath()" class="img-fluid rounded-start" alt="movie-poster"> 
+              </div>  
+              <div *ngIf="!disablePosterUpload.value && response.dbPath !== ''  ">Newly uploaded movie poster 
+                <img   width="100px" height="150px"  [src]="returnImgPath()" class="img-fluid rounded-start" alt="movie-poster"> 
+              </div> 
+
+             
+              </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="submit"  mat-raised-button color="primary" [disabled]="!movieForm.valid" >Update</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+

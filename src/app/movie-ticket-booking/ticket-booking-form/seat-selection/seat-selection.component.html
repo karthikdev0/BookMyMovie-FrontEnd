@@ -1,0 +1,84 @@
+
+<br>
+<br>
+<div *ngIf="id > 0">
+      
+    <img 
+    src="assets\images\screen.jpg" />
+    <div  style="text-align: center;" >All eyes this way please!</div> 
+    <br>
+    <br>
+    <br>
+     <h4 class="mat-subheading-2">Silver Seats</h4> 
+    <table>
+            <tr *ngFor="let row of silverSeatMatrix">
+                <td class="cell-unit" #seat
+                 (click)="selectedSeats(col)"
+                  *ngFor="let col of row"  [ngClass]="col.isSeatBooked ?'disabled-cell' :
+                  col.isSelected?'selectedSeat':''"
+                  >
+                    {{col.seatNumber}}
+                </td>
+            </tr> 
+    </table>
+    <br>
+    <h4 class="mat-subheading-2">Gold Seats</h4>
+    <table>
+        <tr *ngFor="let r of goldSeatMatrix">
+            <td class="cell-unit" #seat
+             (click)="selectedSeats(c)"
+              *ngFor="let c of r"  [ngClass]="c.isSeatBooked ?'disabled-cell' :
+              c.isSelected?'selectedSeat':''"
+              >
+                {{c.seatNumber}}
+            </td>
+        </tr> 
+    </table>
+    <br>
+    <h4 class="mat-subheading-2">Platinum Seats</h4> 
+    <table>
+      <tr *ngFor="let row of platinumSeatMatrix">
+        <td class="cell-unit" #seat
+         (click)="selectedSeats(col)"
+          *ngFor="let col of row"  [ngClass]="col.isSeatBooked ?'disabled-cell' :
+          col.isSelected?'selectedSeat':''"
+          >
+            {{col.seatNumber}}
+        </td>
+    </tr> 
+    
+    </table>
+    
+    
+    <br>
+    <div *ngIf="id > 0" >
+        <div class="container">
+            <div>
+                <div class="box diabled-box inline-block-box"></div>
+                <div class="inline-block-box">&nbsp;&nbsp;&nbsp;  Sold &nbsp;&nbsp;&nbsp;</div>
+                 <div class="box available-box inline-block-box"></div>
+                <div class="inline-block-box">&nbsp;&nbsp;&nbsp;  Available &nbsp;&nbsp;&nbsp;</div>
+                <div class="box selected-box inline-block-box"></div>
+                <div class="inline-block-box">&nbsp;&nbsp;&nbsp; Selected &nbsp;&nbsp;&nbsp;</div>
+          </div>
+          
+        </div>
+    </div>
+</div>
+
+
+<!--  <table>
+    <div *ngFor="let r of allseatMatrix">
+        <tr *ngFor="let row of r">
+            <td class="cell-unit"
+            (click)="selectedSeats(col)"
+             *ngFor="let col of row"  [ngClass]="col.isSeatBooked ?'disabled-cell' :
+             col.isSelected?'selectedSeat':''" >
+                 {{col.seatNumber}}
+            </td>
+        </tr>
+    </div>
+
+</table>   -->
+
+

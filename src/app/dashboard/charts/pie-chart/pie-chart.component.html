@@ -1,0 +1,27 @@
+
+
+<div class="row">
+    <div class="col col-md-10 offset-md-1">
+        <mat-form-field>
+            <mat-label>Select the Theatre</mat-label>
+            <mat-select  (selectionChange)="getChartForSelectedTheatre($event.value)">
+        
+                <mat-option  value="Theatre A">Theatre A</mat-option>
+                <mat-option value="Theatre B">Theatre B</mat-option>
+                <mat-option value="Theatre C">Theatre C</mat-option>
+                <mat-option value="Theatre D">Theatre D</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+
+
+
+
+    <div class="row" style="margin-top: 20px;">
+        <div class="col col-md-6"  id="chartdivpie"  [style.height.px]="500"></div>
+        <div class="col col-md-6" id="chartdivpie2"  [style.height.px]="500"></div>
+    </div>
+
+
+

@@ -1,0 +1,21 @@
+.poster-img{
+    margin-left: 5px;
+    height: 350px;
+   width:250px;
+}
+.description-txt{
+    text-indent: 50px;
+    text-align: justify;
+}
+mat-card-title{
+    text-transform: capitalize;
+}
+.mat-content{
+    margin-top: 5px;
+    margin-bottom: 5px;
+   /*  padding: 3px; */
+}
+mat-card-actions{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

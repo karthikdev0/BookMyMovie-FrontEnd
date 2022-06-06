@@ -1,0 +1,45 @@
+
+
+
+
+
+<br>
+<form #ticketform="ngForm" [formGroup]="ticketBookingForm" autocomplete="off" class="ticket-form">
+<mat-tab-group >
+  <mat-tab [label]="dateArray[i]" *ngFor="let x of selScreenDataByDate; let i = index">
+ <mat-card *ngFor="let screen of x;let j= index">
+  
+     <mat-card-actions style="display: inline-block;">
+      <strong style="text-transform: capitalize;">{{screen.theatreName}} ,{{screen.screenName}}</strong>
+      <button   
+    (mouseenter)="getseatsData(screen)"
+    matTooltipPosition="above"
+    matTooltipClass="tool-tip"
+      matTooltip={{seatsDataStr}}
+      mat-stroked-button color="primary" (click)="selectedScreen(screen.screenId)">
+        {{screen.screeFromTime | date:'h:mm a'}}
+    </button>
+    </mat-card-actions> 
+  </mat-card>
+  </mat-tab>
+</mat-tab-group>
+<app-seat-selection  (seat)="getseatNumber($event)"
+[screenId]="selectedTheatreData.screenId"></app-seat-selection>
+ <br>
+  <button mat-flat-button class="mb-10" (click)="bookTicketForme(ticketform)"
+   [disabled]="!ticketBookingForm.valid || price === 0" 
+    color="primary"> {{price > 0? 'Pay Rs.' +price:''}}</button>
+</form>
+<br>
+<br>
+
+
+
+
+ 
+
+ 
+
+
+ 
+  

@@ -1,0 +1,93 @@
+
+
+
+<div style="margin: 20px;">
+    <div>
+        <div  style="display:flex">
+            <div    class="mat-headline" ><strong>Top Hits</strong></div>
+            <div style="flex: 1;" ></div>
+            <div>
+                <button type="button" color="primary" mat-button routerLink="/movie-list" >See All ></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" *ngFor="let m of movieList1.slice(0,4)">
+                <mat-card>
+                    <mat-card-content>
+                        <img class="poster-img" [src]="createImgPath(m.posterImgPath)" >
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <mat-card-title class="mat-h3" style="padding:5px;" (click)="toTicketBookingPage(m.id)">
+                            {{m.title | uppercase}}
+                          </mat-card-title>
+                    </mat-card-footer>
+                </mat-card>
+    
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+    <div style="margin: 20px;">
+
+        <div class="" style="display:flex">
+            <div  class="mat-title" ><strong>Latest Released</strong></div>
+            <div style="flex: 1;" ></div>
+            <div>
+                <button type="button" mat-button routerLink="/movie-list" >See All</button>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-3" *ngFor="let m of recommendedMoviesList.slice(0,4)">
+                    <mat-card>
+                        <mat-card-content>
+                            <img class="poster-img" mat-card-xl-image [src]="createImgPath(m.posterImgPath)" >
+                        </mat-card-content>
+                        <mat-card-footer>
+                            <mat-card-title class="mat-title" style="padding:5px;" (click)="toTicketBookingPage(m.id)">
+                                {{m.title | uppercase}}
+                              </mat-card-title>
+                        </mat-card-footer>
+                    </mat-card>
+        
+                </div>
+                
+            </div>
+
+
+    </div>
+   
+    <div  style="margin: 20px;">
+
+        <div class="" style="display:flex">
+            <div  class="mat-headline" ><strong>Top Action Movies</strong></div>
+            <div style="flex: 1;" ></div>
+            <div>
+                <button type="button" mat-button routerLink="/movie-list" >See All</button>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-3" *ngFor="let m of movieList2.slice(0,4)">
+                    <mat-card style="height: 330px;width: 200px;">
+                        <mat-card-content>
+                            <img style="height: 256px;width: 156px;"  class="poster-img img-responsive"  [src]="createImgPath(m.posterImgPath)" >
+                        </mat-card-content>
+                        <mat-card-footer>
+                            <mat-card-title class="mat-title" style="padding:5px;" (click)="toTicketBookingPage(m.id)">
+                                {{m.title | uppercase}}
+                              </mat-card-title>
+                        </mat-card-footer>
+                    </mat-card>
+        
+                </div>
+                
+            </div>
+
+
+    </div>
+
+    
+    
+ 
+

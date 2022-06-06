@@ -1,0 +1,6 @@
+.ticket-border{
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+    border-top: 2px dashed red;
+    border-bottom: 2px dashed red;
+}

@@ -1,0 +1,193 @@
+<div *ngIf="role == 'Admin'" >
+You Can't book tickets because You are Admin.
+Please Login or register yourself as user.
+</div>
+
+
+<div class="col-md-12"  *ngIf="role != 'Admin'">
+    <h3>All ticket details</h3>
+<!--    <mat-list *ngFor="let ticket of ticketTitle">
+       <mat-list-item (click)="getFullTicketDetails(ticket.title)">{{ticket.title}}</mat-list-item>
+       <mat-list-item>
+
+       </mat-list-item>
+   </mat-list> -->
+  <!--  <a mat-button [routerLink]="['../write-review']" [relativeTo]="route">link</a> -->
+<!--    <mat-card>
+
+       <mat-card-content>
+        <mat-card-header *ngFor="let ticket of ticketTitle">
+            <button mat-button 
+           
+            (click)="getFullTicketDetails(ticket.title)" >{{ticket.title}}</button>
+            <button mat-button   (click)="toWriteReview(ticket.title)">Add review</button>
+           </mat-card-header>
+       </mat-card-content>
+       <mat-divider inset></mat-divider>
+       <div [ngStyle]="{'display' :isClicked?'block':'none'}">
+           <strong>{{title}}</strong>
+           <mat-list  *ngFor="let t of ticketsDetails"> 
+            <mat-list-item>Booking Id : {{t.bookingId}}</mat-list-item>
+            <mat-list-item>Screen Date : {{t.screenDate | date:'dd-MM-yyyy'}}</mat-list-item>
+            <mat-list-item>Theatre Name : {{t.theatreName}}</mat-list-item>
+            <mat-list-item>Screen Time :{{t.screenTimeStart | date:'h:mm a'}}</mat-list-item>
+            <button type="button" [routerLink]="['/ticket']" [state] ="{ TicketArray : t}" color="primary" mat-raised-button> Print </button>
+            <mat-divider inset></mat-divider>
+            <br>
+        </mat-list>
+        </div>
+        </mat-card> -->
+
+
+      
+<!--            <mat-expansion-panel-header *ngFor="let ticket of ticketTitle" >
+                <mat-panel-title (click)="getFullTicketDetails(ticket.title)" >{{ticket.title}}</mat-panel-title>
+                <mat-panel-description   (click)="toWriteReview(ticket.title)">Write a review</mat-panel-description>
+           </mat-expansion-panel-header>
+           <mat-list *ngFor="let t of ticketsDetails"> 
+               <mat-list-item>Booking Id : {{t.bookingId}}</mat-list-item>
+               <mat-list-item>Screen Date : {{t.screenDate | date:'dd-MM-yyyy'}}</mat-list-item>
+               <mat-list-item>Sear Number : {{t.seatNumber}}</mat-list-item>
+               <mat-list-item>Theatre Name : {{t.theatreName}}</mat-list-item>
+               <mat-list-item>Screen Time :{{t.screenTimeStart | date:'h:mm a'}}</mat-list-item>
+               <button type="button" [routerLink]="['/ticket']" [state] ="{ TicketArray : t}" color="primary" mat-raised-button> Print </button>
+               <mat-divider inset></mat-divider>
+               <br>
+           </mat-list> -->
+ 
+</div>
+<!--     <div *ngIf="togglerating">
+        <h6>select the rating</h6>
+        <ngb-rating [max]="5" (blur)="updateRating(movieId)" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Ticket Id</th>
+                <th>Ticket Class</th>
+                <th>Number of seats</th>
+                <th>Price</th>
+                <th>Ticket Booked Date</th>
+                <th>Movie Date</th>
+                <th>Rate this movie</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let ticket of ticketsDetails">
+            <tr>
+                <td>{{ticket.ticketId}}</td>
+                <td>{{ticket.ticketClass}}</td>
+                <td>{{ticket.numOfseat}}</td>
+                <td>{{ticket.price}}</td>
+                <td>{{ticket.ticketBookedDate | date}}</td>
+                <td>{{ticket.movieDate | date}}</td> -->
+
+
+               <!--  <td><input matInput [formControl]="ratingControl"
+                     (blur)="updateRating(ticket.movieId)"  type="number" max="5"  min="1"
+                     autocomplete="off"
+                     ></td> 
+                    getUserRating(ticket.userId,ticket.movieId)
+                    -->
+
+
+
+
+                     <!-- <td>
+                         <mat-icon (click)="addRating(ticket.movieId)">edit</mat-icon>
+                     
+                     </td>
+                    
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    
+</div>
+
+ -->
+
+
+<!--    <mat-list style="width: 100%;" *ngFor="let ticket of ticketsDetails.reverse().slice(0,5)">
+       <mat-list-item>
+          Movie Title: <strong>{{ticket.title}}</strong> ,
+          Theatre Name: <strong> {{ticket.theatreName}}</strong>,
+          Screen Date: <strong>{{ticket.screenDate | date:'dd-MM-yyyy'}}</strong> ,
+          Screen Time: <strong>{{ticket.screenTimeStart | date:'h:mm a'}}</strong>  
+          &nbsp;
+        <button type="button" [routerLink]="['/ticket']" [state] ="{ TicketArray : ticket}" color="primary" mat-raised-button> Print </button>
+        <button mat-button   (click)="toWriteReview(ticket.title)">Add review</button>
+        </mat-list-item>
+   </mat-list> -->
+
+<!--    <table class="table">
+    <thead>
+        <tr>
+            <th>Movie Title</th>
+            <th>Theatre Name</th>
+            <th>Screen Date</th>
+            <th>Screen Time</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let ticket of ticketsDetails.reverse().slice(0,5)">
+        <tr>
+            <td>{{ticket.title}}</td>
+            <td>{{ticket.theatreName}}</td>
+            <td>{{ticket.screenDate | date:'dd-MM-yyyy'}}</td>
+            <td>{{ticket.screenTimeStart | date:'h:mm a'}}</td>
+            <td>
+                <button type="button" [routerLink]="['/ticket']" [state] ="{ TicketArray : ticket}" color="primary" mat-raised-button> Print </button>
+                <button mat-button   (click)="toWriteReview(ticket)">{{ticket. reviewId === 0 ? 'Add Review' :'Edit Review'}}</button>
+            </td>
+        </tr>
+    </tbody>
+   </table> -->
+
+  <div class="wrapper">
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+    <table mat-table [dataSource]="ticketSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+      <ng-container matColumnDef="theatreName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> TheatreName </th>
+        <td mat-cell *matCellDef="let element"> {{element.theatreName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="screenDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Screen Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.screenDate | date:'dd-MM-yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="screenTimeStart">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Screen Time start </th>
+        <td mat-cell *matCellDef="let element"> {{element.screenTimeStart | date:'h:mm a'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let ticket">
+            <button type="button" [routerLink]="['/ticket']" class="m-2"
+            [state] ="{ TicketArray : ticket}" color="primary" mat-raised-button> Print </button>
+            <button class="m-2" mat-button   (click)="toWriteReview(ticket)">{{ticket.reviewId === 0 ? 'Add Review' :'Edit Review'}} <mat-icon>edit</mat-icon></button>
+             </td>
+      </ng-container>
+<!--       <ng-container matColumnDef="ticket">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit or Add Review</th>
+          <td mat-cell *mat-CellDef="let ticket">
+            <button type="button" [routerLink]="['/ticket']" [state] ="{ TicketArray : ticket}" color="primary" mat-raised-button> Print </button>
+            <button mat-button   (click)="toWriteReview(ticket)">{{ticket.reviewId === 0 ? 'Add Review' :'Edit Review'}}</button>
+        </td>
+      </ng-container> -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>   
+  </div>
+
+  <br>
+  <br>
+  
+
+  
+  

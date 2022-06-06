@@ -1,0 +1,29 @@
+.ticket-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .form-full-width {
+    width: 100%;
+  }
+
+  mat-tab-group{
+    width: 400px;
+    text-align: center;
+  }
+
+  .tool-tip {
+    white-space: pre-line; 
+  background-color:white;
+  height: auto;
+  width:auto;
+  color: #000 !important;
+  font-weight: 400;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 8px;
+  text-align: center;
+  box-shadow: 0 1px 3px 0 rgb(28 28 28 / 35%);
+
+   }

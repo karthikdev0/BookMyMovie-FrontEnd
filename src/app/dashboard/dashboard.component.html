@@ -1,0 +1,39 @@
+<h3>Welcome  {{username}}</h3>
+<!-- 
+
+<p>username :  {{username}} ,  Role  : {{role}}</p> -->
+
+<div>
+    <div *ngIf="role == 'Standard'">
+        <button type="button" mat-raised-button routerLink="my-account">My Account details</button>
+        <button type="button" mat-raised-button routerLink="my-tickets-details">My Ticket details</button>
+        <button type="button" mat-raised-button routerLink="my-reviews">My Reviews</button>
+    </div>
+   
+   <br>
+   <br>
+    <div *ngIf="role == 'Admin'">
+       <!--  <button type="button" color="primary" mat-button (click)="toMoviePage()"> Movie Page</button> -->
+        <button type="button" color="primary" mat-raised-button routerLink="insert-movie-record"> Movie Page</button>
+        <button type="user" color="primary" mat-raised-button routerLink="charts">Charts</button>
+</div>
+</div>
+<br>
+
+<div class="container-fluid">
+<div class="col-md-12">
+    <router-outlet></router-outlet>
+</div>
+       
+   
+ 
+</div>
+
+
+
+    
+
+
+
+
+

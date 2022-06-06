@@ -1,0 +1,46 @@
+
+<article class="container container-fluid">
+    <section class="create">
+         <h1>Create Movie</h1>
+         <form>
+           <div class="form-group">
+             <label for="title">Title</label>
+             <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" [(ngModel)]="title">
+           </div>
+           <div class="form-group">
+             <label for="ratings">Ratings</label>
+             
+             <select class="form-control"  class="form-control" id="ratings" name="ratings"  [(ngModel)]="ratings">
+               <option value="" disabled>Choose your ratings</option>
+               <option *ngFor="let rating of ratingsList" [ngValue]="rating">{{rating}}</option>
+             </select>
+           
+             
+           </div>
+           <div class="form-group">
+               <label for="description">Description</label>
+               <textarea class="form-control" id="description" name="description" [(ngModel)]="description"></textarea>
+             </div>
+             <div class="form-group">
+               <label for="releaseDate">ReleaseDate</label>
+               <input type="date" class="form-control" id="releaseDate" name="releaseDate"  [(ngModel)]="releaseDate">
+             </div>
+             <br>
+           <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+           <div class="row">
+             <div class="offset-md-5 col-md-2">
+               <button type="button" class="btn btn-primary" (click)="onCreate()">Create </button>
+             </div>
+           </div>
+         </form>
+       </section> 
+     </article>
+   
+   
+   <br>
+   <br>
+
+   
+         
+     
+     

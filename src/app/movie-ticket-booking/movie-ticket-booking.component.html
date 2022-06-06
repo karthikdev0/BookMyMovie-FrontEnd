@@ -1,0 +1,66 @@
+<div class="mt-5">
+
+  <div class="col-md-12">
+    <app-movie-theatre-details [mId]="mId" [TheatreData]="theatreData"></app-movie-theatre-details>
+  </div>
+
+  </div>
+  <br>
+
+    <div class="col-md-12">
+      <app-movie-reviews [movieId]="movieId">
+</app-movie-reviews>
+  </div>
+  <div class="col-md-12">
+    <app-movie-recommendation (RecommendedMovieId)="recommendedId($event)" [MovieId]="movieId" ></app-movie-recommendation>
+  </div>
+
+<!-- <div class="row">
+  <div class="col-md-2">
+
+  </div>
+  <div class="mt-5 mb-10 col-md-6">
+    <app-ticket-booking-form 
+    [theatreDetails]="theatreData" 
+    (ticketSuccessDetails)="ticketDetailsPrint($event)"
+    ></app-ticket-booking-form>
+    </div>
+<div class="mt-5 mb-5 col-md-4">   
+   <app-movie-reviews [movieId]="movieId">
+</app-movie-reviews>
+</div>
+</div> -->
+
+
+
+<!--   <div class="row">
+      <div class="col-md-6 mb-10" *ngIf="ticketPrintArray.length != 0">
+        <mat-card>
+          <mat-card-title class="text-success">Ticket Booked successfully</mat-card-title>
+          <mat-card-content *ngFor="let ticketPrint of ticketPrintArray">
+            <div>TicketId :      {{ticketPrint.ticketId}}</div>
+            <div>FullName :      {{ticketPrint.fullName}}</div>
+            <div>Movie Title:    {{ticketPrint.title}}</div>
+            <div>Theatre Name:   {{ticketPrint.theatreName}}</div>
+            <div>Theatre City:   {{ticketPrint.theatreCity}}</div>
+            <div>Number of seats:{{ticketPrint.numOfSeats}}</div>
+            <div>Price :         {{ticketPrint.price}}</div>
+            <div> Movie Date:  {{ticketPrint.movieDate | date}}</div>
+            <div> Created Date:  {{ticketPrint.createdDate | date}}</div>
+
+          </mat-card-content>
+          <mat-card-footer>
+            <a class="mb-10 ml-10" style="text-align: center;" mat-raised-button color="primary"  (click)="takeMetoDashBoard()" >Dashboard</a>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+  </div>
+   <div style="margin: auto;" class="col-md-12">
+    <app-movie-reviews [movieId]="movieId">
+    </app-movie-reviews>
+  </div>  -->
+
+
+
+
+ 

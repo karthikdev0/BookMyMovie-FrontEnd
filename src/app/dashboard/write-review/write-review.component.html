@@ -1,0 +1,12 @@
+
+    <mat-label>Select the rating:</mat-label>
+    <ngb-rating [max]="5"  [(rate)]="starRating" [readonly]="false"></ngb-rating>
+    <br>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Write the review</mat-label>
+        <textarea rows="9" matInput [(ngModel)]="reviewContent" ></textarea>
+    </mat-form-field>
+    <br>
+    <button type="submit" (click)="submitReview()" mat-raised-button>Submit</button>
+
+
