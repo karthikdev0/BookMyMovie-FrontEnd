@@ -22,13 +22,13 @@ let Monthdata  = [
 ]
 
 let weekData = [
-  {"movie 2":90000,"movie 1":20000,"movie 3":23400,"movie 4": 12000,"movie 5":10000,"movie 6":12879,"movie 7":13234,"movie 8":24365,"month": "Monday"},
-  {"movie 2":60000,"movie 1":40000,"movie 3":17300,"movie 4": 56000,"movie 5":11324,"movie 6":1689,"movie 7":1268,"movie 8":44658,"month": "Tuesday"},
-  {"movie 2":30000,"movie 1":10000,"movie 3":90000,"movie 4": 23000,"movie 5":34561,"movie 6":65870,"movie 7":45780,"movie 8":6784,"month": "Wednesday"},
-  {"movie 2":50000,"movie 1":90000,"movie 3":100000,"movie 4": 10000,"movie 5":56234,"movie 6":12346,"movie 7":76990,"movie 8":8975,"month": "Thrusday"},
-  {"movie 2":20000,"movie 1":50000,"movie 3":47300,"movie 4": 26000,"movie 5":12892,"movie 6":65808,"movie 7":67794,"movie 8":23451,"month": "Friday"},
-  {"movie 2":30000,"movie 1":20000,"movie 3":30000,"movie 4": 23000,"movie 5":15690,"movie 6":24799,"movie 7":23456,"movie 8":12454,"month": "Saturday"},
-  {"movie 2":10000,"movie 1":30000,"movie 3":40000,"movie 4": 90000,"movie 5":14643,"movie 6":14795,"movie 7":32547,"movie 8":56891,"month": "Sunday"}
+  {"movie 2":90000,"movie 1":20000,"movie 3":23400,"movie 4": 12000,"movie 5":10000,"movie 6":12879,"movie 7":13234,"movie 8":24365,"week": "Monday"},
+  {"movie 2":60000,"movie 1":40000,"movie 3":17300,"movie 4": 56000,"movie 5":11324,"movie 6":1689,"movie 7":1268,"movie 8":44658,"week": "Tuesday"},
+  {"movie 2":30000,"movie 1":10000,"movie 3":90000,"movie 4": 23000,"movie 5":34561,"movie 6":65870,"movie 7":45780,"movie 8":6784,"week": "Wednesday"},
+  {"movie 2":50000,"movie 1":90000,"movie 3":100000,"movie 4": 10000,"movie 5":56234,"movie 6":12346,"movie 7":76990,"movie 8":8975,"week": "Thrusday"},
+  {"movie 2":20000,"movie 1":50000,"movie 3":47300,"movie 4": 26000,"movie 5":12892,"movie 6":65808,"movie 7":67794,"movie 8":23451,"week": "Friday"},
+  {"movie 2":30000,"movie 1":20000,"movie 3":30000,"movie 4": 23000,"movie 5":15690,"movie 6":24799,"movie 7":23456,"movie 8":12454,"week": "Saturday"},
+  {"movie 2":10000,"movie 1":30000,"movie 3":40000,"movie 4": 90000,"movie 5":14643,"movie 6":14795,"movie 7":32547,"movie 8":56891,"week": "Sunday"}
 ]
 
 
@@ -123,10 +123,57 @@ export class LineChartComponent implements OnInit {
 
   ]
 
+
+  weekDataFinal:any[]=[];
   constructor() {}
 
   ngOnInit(): void {
     this.toggleBtn = false;
+    this.chart  = am4core.create("chartdiv",am4charts.XYChart);
+    let title  =  this.chart.titles.create();
+    title.text = "Total collection by movie";
+
+  
+    this.chart.colors.list = [
+      am4core.color("red"),
+      am4core.color("green"),
+      am4core.color("blue"),
+      am4core.color("purple"),
+      am4core.color("black"),
+      am4core.color("brown"),
+    ];
+
+    this.chart.data = weekData;
+
+    let categoryAxis = this.chart.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.title.text = "week";
+      categoryAxis.dataFields.category = "week";
+
+      let valueAxisY = this.chart.yAxes.push(new am4charts.ValueAxis());
+      valueAxisY.title.text = "Total collection";
+      valueAxisY.renderer.minWidth = 20;
+
+      let seriesNames :any[]=[];
+
+        this.movies.forEach( x => {
+          seriesNames.push(x.title);
+        })
+
+      for(let i=0;i<this.weeks.length;i++){
+        let series = this.chart.series.push(new am4charts.LineSeries());
+        series.dataFields.categoryX  = "week";
+        series.dataFields.valueY = seriesNames[i];
+        series.name = seriesNames[i];
+      
+        let bullet  =  series.bullets.push(new am4charts.CircleBullet());
+        bullet.circle.strokeWidth = 2;
+        bullet.circle.radius = 4;
+        bullet.circle.fill = am4core.color("#fff");
+        
+        bullet.tooltipText = "Month : {categoryX} \n collection:{valueY} \n title: {name} ";
+      }
+
+      this.chart.legend  = new am4charts.Legend();
   }
 
   
@@ -134,74 +181,128 @@ selectedMovies(data:any){
 console.log(data);
 }
 
+
+
 getChart(){
-  console.log(this.dataControl.value);
-  console.log(this.monthsControl.value);
-  console.log(this.movieControl.value);
-  console.log(this.weeksControl.value);
-  let count  =0;
+/*       console.log(this.dataControl.value);
+      console.log(this.monthsControl.value);
+      console.log(this.movieControl.value);
+      console.log(this.weeksControl.value); */
+  
+     let WeeklyFilteredData: any[]=[];
+     if(this.dataControl.value === 'weekly'){
+       let weeks = this.weeksControl.value;
+       let movies  =  this.movieControl.value as [];
+       weeks.forEach((element: string) => {
+         weekData.forEach( val => {
+          if(element === val.week){
+            WeeklyFilteredData.push(val);
+           }
+         })
+       });
+   //   console.log(data); 
+    this.chart  = am4core.create("chartdiv",am4charts.XYChart);
+    let title  =  this.chart.titles.create();
+    title.text = "Total collection by movie";
+    this.chart.colors.list = [
+      am4core.color("red"),
+      am4core.color("green"),
+      am4core.color("blue"),
+      am4core.color("purple"),
+      am4core.color("black"),
+      am4core.color("brown"),
+    ];
+    this.chart.data = WeeklyFilteredData;
 
-  let data: { "movie 2": number; "movie 1": number; "movie 3": number; "movie 4": number; "movie 5": number; "movie 6": number; "movie 7": number; "movie 8": number; month: string; }[]  = [];
+    let categoryAxis = this.chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.title.text = "Week";
+    categoryAxis.dataFields.category = "week";
 
-  if(this.dataControl.value === 'weekly'){
-   // data = weekData;
-    let weeks = this.weeksControl.value;
-    let movies  =  this.movieControl.value as [];
-    weeks.forEach((element: string) => {
-      weekData.forEach( val => {
-/*        console.log(element);
-        console.log(val.month); */ 
-        if(element === val.month){
-          data.push(val);
-        }
-      })
-    });
+    let valueAxisY = this.chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxisY.title.text = "Total collection";
+    valueAxisY.renderer.minWidth = 20;
 
-    console.log(data);
-    let filterData:{'title':string,'value':number}[] = [];
-   let finalFilteredData: any[] =[];
-    for(let key1 in data){
-      for(let key2 in movies){
-        console.log(key1 , data[key1]['movie 1']);
-        console.log(key2,movies[key2]);
-        for(let x in data[key1]){
-          //console.log(x);
+    let seriesNames  = movies;
+
+    for(let i=0;i<movies.length;i++){
+      let series = this.chart.series.push(new am4charts.LineSeries());
+      series.dataFields.categoryX  = "week";
+      series.dataFields.valueY = seriesNames[i];
+      series.name = seriesNames[i];
+    
+      let bullet  =  series.bullets.push(new am4charts.CircleBullet());
+      bullet.circle.strokeWidth = 2;
+      bullet.circle.radius = 4;
+      bullet.circle.fill = am4core.color("#fff");
       
-          if(x === movies[key2]){
-            let key  =  x;
-            let value =  data[key1][movies[key2]] as number;
-           filterData.push({'title': key,'value':value});
-          // count++;
-          }
-        }
-      //  if(key1 === movies[key2]){
-     //     finalFilteredData.push(data);
-      //  }
-      }
-
-        finalFilteredData.push(filterData);
-       console.log(finalFilteredData.map( x  => {
-           x.map( (y:{'title':string,'value':number}) => {
-             console.log(y.title)
-           })
-        }))
-        filterData = [];
-
-
-
+      bullet.tooltipText = "Week : {categoryX} \n collection:{valueY} \n title: {name} ";
     }
-    console.log(filterData);
+    this.chart.legend  = new am4charts.Legend();
+}
+    if(this.dataControl.value  === 'monthly'){
+      let months = this.monthsControl.value;
+      let movies  =  this.movieControl.value as [];
+      let MonthlyFilteredData: any[]=[];
+      months.forEach((element:any) => {
+        Monthdata.forEach( val => {
+         /*  console.log(element);
+          console.log(val.month);  */
+         if(element === val.month){
+          MonthlyFilteredData.push(val);
+          }
+        })
+      });
+ 
+    // console.log( MonthlyFilteredData); 
 
-    console.log(finalFilteredData);
+      this.chart  = am4core.create("chartdiv",am4charts.XYChart);
+      let title  =  this.chart.titles.create();
+      title.text = "Total collection by movie";
 
-  }
-  else if(this.dataControl.value === 'month'){
-    data = Monthdata;
-  }
+ 
+   this.chart.colors.list = [
+     am4core.color("red"),
+     am4core.color("green"),
+     am4core.color("blue"),
+     am4core.color("purple"),
+     am4core.color("black"),
+     am4core.color("brown"),
+   ];
+
+   this.chart.data =  MonthlyFilteredData;
+
+   let categoryAxis = this.chart.xAxes.push(new am4charts.CategoryAxis());
+   categoryAxis.title.text = "Month";
+   categoryAxis.dataFields.category = "month";
+
+   let valueAxisY = this.chart.yAxes.push(new am4charts.ValueAxis());
+   valueAxisY.title.text = "Total collection";
+   valueAxisY.renderer.minWidth = 20;
+
+   let seriesNames  = movies;
+
+   for(let i=0;i<movies.length;i++){
+     let series = this.chart.series.push(new am4charts.LineSeries());
+     series.dataFields.categoryX  = "month";
+     series.dataFields.valueY = seriesNames[i];
+     series.name = seriesNames[i];
+   
+     let bullet  =  series.bullets.push(new am4charts.CircleBullet());
+     bullet.circle.strokeWidth = 2;
+     bullet.circle.radius = 4;
+     bullet.circle.fill = am4core.color("#fff");
+     
+     bullet.tooltipText = "Month : {categoryX} \n collection:{valueY} \n title: {name} ";
+   }
+
+   this.chart.legend  = new am4charts.Legend();
+    }
 }
 
 
-  switchData(){
+
+
+ /*  switchData(){
     this.toggleBtn = !this.toggleBtn;
     console.log(this.toggleBtn);
     this.chart  = am4core.create("chartdiv",am4charts.XYChart);
@@ -258,6 +359,6 @@ getChart(){
 
       this.chart.legend  = new am4charts.Legend();
 
-  }
+  } */
 
 }

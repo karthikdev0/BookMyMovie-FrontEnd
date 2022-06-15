@@ -100,10 +100,10 @@ export class StockChartComponent implements OnInit {
     
     // Add a stock legend
     // https://www.amcharts.com/docs/v5/charts/stock-chart/stock-legend/
-    let valueLegend = mainPanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
-      stockChart: stockChart
-    }));
-    valueLegend.data.setAll([valueSeries]);
+   // let valueLegend = mainPanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
+   //   stockChart: stockChart
+   // }));
+   // valueLegend.data.setAll([valueSeries]);
     
     /**
      * Secondary (volume) panel
@@ -111,54 +111,54 @@ export class StockChartComponent implements OnInit {
     
     // Create a main stock panel (chart)
     // https://www.amcharts.com/docs/v5/charts/stock-chart/#Adding_panels
-    let volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
-      wheelY: "zoomX",
-      panX: true,
-      panY: true,
-      height: am5.percent(30)
-    }));
+   // let volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
+   //   wheelY: "zoomX",
+   //   panX: true,
+   //   panY: true,
+   //   height: am5.percent(30)
+  //  }));
     
     // Create axes
     // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-    let volumeValueAxis = volumePanel.yAxes.push(am5xy.ValueAxis.new(root, {
-      numberFormat: "#.#a",
-      renderer: am5xy.AxisRendererY.new(root, {})
-    }));
+  //  let volumeValueAxis = volumePanel.yAxes.push(am5xy.ValueAxis.new(root, {
+  //    numberFormat: "#.#a",
+ //     renderer: am5xy.AxisRendererY.new(root, {})
+ //   }));
     
-    let  volumeDateAxis = volumePanel.xAxes.push(am5xy.GaplessDateAxis.new(root, {
-      baseInterval: {
-        timeUnit: "day",
-        count: 1
-      },
-      renderer: am5xy.AxisRendererX.new(root, {})
-    }));
+ //   let  volumeDateAxis = volumePanel.xAxes.push(am5xy.GaplessDateAxis.new(root, {
+ //     baseInterval: {
+ //       timeUnit: "day",
+ //       count: 1
+ //     },
+ //     renderer: am5xy.AxisRendererX.new(root, {})
+ //   }));
     
     // Add series
     // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-    let volumeSeries = volumePanel.series.push(am5xy.ColumnSeries.new(root, {
-      name: "PEOPLE's",
-      valueXField: "Date",
-      valueYField: "Volume",
-      xAxis: volumeDateAxis,
-      yAxis: volumeValueAxis,
-      legendValueText: "{valueY}",
-      tooltip: am5.Tooltip.new(root, {
-        labelText: "[bold] Number of {name} : {valueY}[/]\n On {valueX.formatDate()} "
-      })
-    }));
+ //   let volumeSeries = volumePanel.series.push(am5xy.ColumnSeries.new(root, {
+ //     name: "PEOPLE's",
+ //     valueXField: "Date",
+ //     valueYField: "Volume",
+ //     xAxis: volumeDateAxis,
+ //     yAxis: volumeValueAxis,
+ //     legendValueText: "{valueY}",
+//      tooltip: am5.Tooltip.new(root, {
+ //       labelText: "[bold] Number of {name} : {valueY}[/]\n On {valueX.formatDate()} "
+ //     })
+ //   }));
     
   //  volumeSeries.data.setAll(data);
     
     // Set main value series
     // https://www.amcharts.com/docs/v5/charts/stock-chart/#Setting_main_series
-    stockChart.set("volumeSeries", volumeSeries);
+   // stockChart.set("volumeSeries", volumeSeries);
     
     
     // Add a stock legend
     // https://www.amcharts.com/docs/v5/charts/stock-chart/stock-legend/
-    let volumeLegend = volumePanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
-      stockChart: stockChart
-    }));
+    //let volumeLegend = volumePanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
+    //  stockChart: stockChart
+    //}));
    // volumeLegend.data.setAll([volumeSeries]);
     
     
@@ -171,12 +171,12 @@ export class StockChartComponent implements OnInit {
       snapToSeriesBy: "y!"
     }));
     
-    volumePanel.set("cursor", am5xy.XYCursor.new(root, {
-      yAxis: volumeValueAxis,
-      xAxis: volumeDateAxis,
-      snapToSeries: [volumeSeries],
-      snapToSeriesBy: "y!"
-    }));
+ //   volumePanel.set("cursor", am5xy.XYCursor.new(root, {
+ //     yAxis: volumeValueAxis,
+ //     xAxis: volumeDateAxis,
+ //     snapToSeries: [volumeSeries],
+ ///     snapToSeriesBy: "y!"
+ //   }));
     
     
     // Add scrollbar

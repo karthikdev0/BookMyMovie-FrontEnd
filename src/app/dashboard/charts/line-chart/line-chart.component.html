@@ -1,5 +1,5 @@
-<button mat-button color="primary" (click)="switchData()">{{toggleBtn?"Weekly":"Monthly"}}</button>
-<!-- <div class="row">
+<!-- <button mat-button color="primary" (click)="switchData()">{{toggleBtn?"Weekly":"Monthly"}}</button> -->
+ <div class="row">
     <div class="col col-md-10 offset-md-1">
         <form>
             <mat-radio-group [formControl]="dataControl" color="primary" aria-label="Select an option">
@@ -16,7 +16,7 @@
             <mat-form-field *ngIf="dataControl.value=== 'monthly'" >
                 <mat-label>Select the Months</mat-label>
                 <mat-select [formControl]="monthsControl" multiple>
-                    <mat-option *ngFor="let mon of months" [value]="mon.name">{{mon.name}}</mat-option>
+                    <mat-option *ngFor="let mon of months" [value]="mon.abbreviation">{{mon.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field *ngIf="dataControl.value=== 'weekly'" >
@@ -28,7 +28,7 @@
             <button type="submit" (click)="getChart()" mat-button>Submit</button>
         </form>
     </div>
-</div> -->
+</div> 
 
 <!-- (selectionChange)="getChartForSelectedTheatre($event.value)"-->
  
