@@ -49,6 +49,10 @@ const routes: Routes = [
     {path:'insert-movie-record',component:InsertMovieRecordComponent},
     {path:'my-reviews',component:MyReviewsComponent},
     {path:'write-review',component:WriteReviewComponent},
+    {path:'charts/line-chart',component:LineChartComponent},
+    {path:'charts/pie-chart',component:PieChartComponent},
+    {path:'charts/stock-chart',component:StockChartComponent},
+
     {path:'charts',component:ChartsComponent,children :[
       {
         path:'pie-chart',component:PieChartComponent
@@ -59,7 +63,8 @@ const routes: Routes = [
       {
         path:'stock-chart',component:StockChartComponent
       }
-    ]}
+    ]},
+    
 ]
 
 },

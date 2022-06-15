@@ -2,6 +2,7 @@ import { Component,NgZone, OnInit } from '@angular/core';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import { ActivatedRoute, Router } from '@angular/router';
 
 am4core.useTheme(am4themes_animated);
 
@@ -18,10 +19,20 @@ export class ChartsComponent implements OnInit {
 
   lineChartTabBtn:boolean = false;
 
-  constructor(private zone: NgZone) {}
+  constructor(private zone: NgZone,private router:Router,private route:ActivatedRoute) {}
 
   ngOnInit(): void {
     this.toggleBtn = false;
+  }
+
+  toLineChartPage(){
+    this.router.navigate(['../dashboard/'+'a' +'/charts/line-chart']);
+  }
+  toPieChartPage(){
+    this.router.navigate(['../dashboard/'+'a' +'/charts/pie-chart']);
+  }
+  toStockChartPage(){
+    this.router.navigate(['../dashboard/'+'a' +'/charts/stock-chart']);
   }
 
   
