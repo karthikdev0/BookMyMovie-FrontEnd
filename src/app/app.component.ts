@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserService } from './services/user.service';
 
@@ -13,9 +13,11 @@ import { UserService } from './services/user.service';
 
 export class AppComponent implements OnInit {
 title = 'BookMyMovie';
+
 username:any;
 isLoggedIn : boolean = false;
-  constructor(private router:Router,private jwtHelper: JwtHelperService,private uService:UserService) {  
+isDashboard :boolean  =  false;
+  constructor(private route:ActivatedRoute,private router:Router,private jwtHelper: JwtHelperService,private uService:UserService) {  
   }
   ngOnInit(): void {
    // this.getUsername();
@@ -60,10 +62,16 @@ this.username = localStorage.getItem("username");
 }
 
 takeMetoUserDashboard(){
-  if(this.isLoggedIn === true){
-  this.router.navigate(['dashboard',localStorage.getItem("username")]);
+  console.log('/dashboard/'+this.username + '/charts');
+  console.log(this.isDashboard);
+  if(this.isLoggedIn === true || this.isDashboard === false){
+  //  if( this.router.url !== '/dashboard/'+this.username + '/charts'){
+      this.isDashboard = !this.isDashboard;
+    this.router.navigate(['dashboard',localStorage.getItem("username"),'charts']);
+  //  }
+    
   }
-  else{
+  else if(this.isLoggedIn === false){
     this.router.navigate(['login']);
   }
 }
