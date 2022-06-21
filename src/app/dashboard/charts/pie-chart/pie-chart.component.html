@@ -4,9 +4,8 @@
     <div class="col col-md-10 offset-md-1">
         <mat-form-field>
             <mat-label>Select the Theatre</mat-label>
-            <mat-select  (selectionChange)="getChartForSelectedTheatre($event.value)">
-        
-                <mat-option  value="Theatre A">Theatre A</mat-option>
+            <mat-select [(value)]="selectedTheatre" (selectionChange)="getChartForSelectedTheatre($event.value)">
+                <mat-option   value="Theatre A">Theatre A</mat-option>
                 <mat-option value="Theatre B">Theatre B</mat-option>
                 <mat-option value="Theatre C">Theatre C</mat-option>
                 <mat-option value="Theatre D">Theatre D</mat-option>

@@ -190,9 +190,27 @@ getChart(){
       console.log(this.weeksControl.value); */
   
      let WeeklyFilteredData: any[]=[];
+
+
+
      if(this.dataControl.value === 'weekly'){
        let weeks = this.weeksControl.value;
-       let movies  =  this.movieControl.value as [];
+    //   let movies  =  this.movieControl.value as [];
+
+       let moviesNameList :any[]=[];
+      for (let key2 in weekData[0]){
+          // console.log(key2);
+          if(key2 !== 'week'){
+            moviesNameList.push(key2);
+          }       
+  } 
+  let movies  =   moviesNameList as [];
+
+
+
+
+
+  //   let movies  =  weekData.
        weeks.forEach((element: string) => {
          weekData.forEach( val => {
           if(element === val.week){
@@ -241,7 +259,14 @@ getChart(){
 }
     if(this.dataControl.value  === 'monthly'){
       let months = this.monthsControl.value;
-      let movies  =  this.movieControl.value as [];
+      let moviesNameList :any[]=[];
+      for (let key2 in weekData[0]){
+   // console.log(key2);
+        if(key2 !== 'month')
+        moviesNameList.push(key2);
+      }
+     // let movies  =  this.movieControl.value as [];
+     let movies  =  moviesNameList as [];
       let MonthlyFilteredData: any[]=[];
       months.forEach((element:any) => {
         Monthdata.forEach( val => {

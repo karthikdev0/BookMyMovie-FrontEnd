@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component,DoCheck,NgZone, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component,DoCheck,NgZone, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
@@ -13,7 +13,8 @@ let data = [
     "seats":70,
     "silverSeats":20,
     "goldSeats":30,
-    "platinumSeats":20
+    "platinumSeats":20,
+    "pulled":true
   },
   {
     "theatre":"Theatre B",
@@ -37,7 +38,8 @@ let data = [
     "seats":100,
     "silverSeats":50,
     "goldSeats":30,
-    "platinumSeats":20
+    "platinumSeats":20,
+    "pulled":true
   },
   {
     "theatre":"Theatre A",
@@ -72,7 +74,7 @@ let data = [
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.css']
 })
-export class PieChartComponent implements OnInit {
+export class PieChartComponent implements OnInit , AfterViewInit{
 
   public chart: am4charts.PieChart | undefined;
 
@@ -83,18 +85,22 @@ export class PieChartComponent implements OnInit {
 
   constructor(private zone: NgZone) {}
  
- 
-
   ngOnInit(): void {
+
+  
+  
   }
 
   
 
+  
+
   getChartForSelectedTheatre(tvalue:any){
-  //  console.log(data);
-   
+    console.log(tvalue);
+    console.log(this.chart?.data);
+    console.log(this.chart2);
     this.selectedTitle = '';
-    if(this.chart?.data !== undefined){
+    if(this.chart?.data){
       this.chart.data = data.filter( x => x.theatre === tvalue); 
     }
     if (this.chart2) {
@@ -105,16 +111,17 @@ export class PieChartComponent implements OnInit {
   
 
   ngAfterViewInit() {
-const right="right";
-const left="left";
-const center  =  "center";
+    //console.log("2" + this.selectedTheatre);
+    
+
 /* if(this.chart){
   this.chart.align = left;  
 } */
    // Create chart instance
 var chart = am4core.create("chartdivpie", am4charts.PieChart);
 
-
+chart.data = data.filter( x => x.theatre === this.selectedTheatre);
+console.log(chart.data);
 chart.radius = 120;
 
 // Add and configure Series
@@ -136,6 +143,16 @@ let as = pieSeries.slices.template.states.getKey("active");
 if(as !== undefined){
   as.properties.shiftRadius = 0;
 }
+
+
+let ds = pieSeries.slices.template.states.getKey("default");
+if(ds){
+  ds.properties.scale = 1;
+}
+
+
+//console.log(pieSeries.slices.template._dataItem?.component?.isActive.valueOf);
+
 console.log(this.selectedTheatre);
 
 //let title  = chart.titles.create(); 
@@ -153,10 +170,21 @@ this.chart = chart;
 //let bullet  = pieSeries.bullets.push(new am4core.Sprite());
 //bullet.tooltipText = "Month : {categoryX} \n collection:{valueY} \n title: {name} ";
 
+pieSeries.slices.template.propertyFields.isActive="pulled";
 
+console.log(pieSeries.slices.values);
+let slicesValues =  pieSeries.slices.values;
+console.log(slicesValues);
+/* slicesValues.forEach( x => {
+  console.log("2");
+  console.log(x);
+}); */
+/* if(pieSeries.slices.template.propertyFields.isActive === "pulled"){
 
+} */
 
 pieSeries.slices.template.events.on("hit", function(ev){
+  
 
   //this.createChart2(ev.target.dataItem?.dataContext);
  let chart2 = am4core.create("chartdivpie2", am4charts.PieChart);

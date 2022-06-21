@@ -11,7 +11,31 @@ let data = [
   { Date: new Date("2022-05-04").getTime(), Open: 61.105, High: 61.93, Low: 58, Close: 59.610001, Volume: 16557200 },
   { Date: new Date("2022-05-05").getTime(), Open: 62.349998, High: 68.07, Low: 59.009998, Close: 60.27, Volume: 23694100 },
   { Date: new Date("2022-05-06").getTime(), Open: 61.330002, High: 61.700001, Low: 53.331001, Close: 53.939999, Volume: 23385500 },
-  { Date: new Date("2022-05-07").getTime(), Open: 53.599998, High: 57.299999, Low: 50, Close: 57.119999, Volume: 23942400 }
+  { Date: new Date("2022-05-07").getTime(), Open: 53.599998, High: 57.299999, Low: 50, Close: 57.119999, Volume: 23942400 },
+  { Date: new Date("2022-05-08").getTime(), Open: 70.858002, High: 72.080002, Low: 64.809998, Close: 43.019997, Volume: 18642700 },
+  { Date: new Date("2022-05-09").getTime(), Open: 63.865002, High: 67.160004, Low: 60.509998, Close: 40.510002, Volume: 19323400 },
+  { Date: new Date("2022-05-10").getTime(), Open: 60.110001, High: 64.300003, Low: 55.099998, Close: 98.900002, Volume: 24134800 },
+  { Date: new Date("2022-05-11").getTime(), Open: 61.105, High: 61.93, Low: 58, Close: 12.610001, Volume: 16557200 },
+  { Date: new Date("2022-05-12").getTime(), Open: 62.349998, High: 68.07, Low: 59.009998, Close: 34.27, Volume: 23694100 },
+  { Date: new Date("2022-05-13").getTime(), Open: 61.330002, High: 61.700001, Low: 53.331001, Close: 53.939999, Volume: 23385500 },
+  { Date: new Date("2022-05-14").getTime(), Open: 53.599998, High: 57.299999, Low: 50, Close: 67.119999, Volume: 23942400 },
+  { Date: new Date("2022-05-15").getTime(), Open: 70.858002, High: 72.080002, Low: 64.809998, Close: 56.019997, Volume: 18642700 },
+  { Date: new Date("2022-05-16").getTime(), Open: 63.865002, High: 67.160004, Low: 60.509998, Close: 45.510002, Volume: 19323400 },
+  { Date: new Date("2022-05-17").getTime(), Open: 60.110001, High: 64.300003, Low: 55.099998, Close: 35.900002, Volume: 24134800 },
+  { Date: new Date("2022-05-18").getTime(), Open: 61.105, High: 61.93, Low: 58, Close: 45.610001, Volume: 16557200 },
+  { Date: new Date("2022-05-19").getTime(), Open: 62.349998, High: 68.07, Low: 59.009998, Close: 70.27, Volume: 23694100 },
+  { Date: new Date("2022-05-20").getTime(), Open: 61.330002, High: 61.700001, Low: 53.331001, Close: 53.939999, Volume: 23385500 },
+  { Date: new Date("2022-05-21").getTime(), Open: 53.599998, High: 57.299999, Low: 50, Close: 57.119999, Volume: 23942400 },
+  { Date: new Date("2022-05-22").getTime(), Open: 70.858002, High: 72.080002, Low: 64.809998, Close: 79.019997, Volume: 18642700 },
+  { Date: new Date("2022-05-23").getTime(), Open: 63.865002, High: 67.160004, Low: 60.509998, Close: 45.510002, Volume: 19323400 },
+  { Date: new Date("2022-05-24").getTime(), Open: 60.110001, High: 64.300003, Low: 55.099998, Close: 23.900002, Volume: 24134800 },
+  { Date: new Date("2022-05-25").getTime(), Open: 61.105, High: 61.93, Low: 58, Close: 15.610001, Volume: 16557200 },
+  { Date: new Date("2022-05-26").getTime(), Open: 62.349998, High: 68.07, Low: 59.009998, Close: 78.27, Volume: 23694100 },
+  { Date: new Date("2022-05-27").getTime(), Open: 61.330002, High: 61.700001, Low: 53.331001, Close: 56.939999, Volume: 23385500 },
+  { Date: new Date("2022-05-28").getTime(), Open: 53.599998, High: 57.299999, Low: 50, Close: 43.119999, Volume: 23942400 },
+  { Date: new Date("2022-05-29").getTime(), Open: 70.858002, High: 72.080002, Low: 64.809998, Close: 98.019997, Volume: 18642700 },
+  { Date: new Date("2022-05-30").getTime(), Open: 63.865002, High: 67.160004, Low: 60.509998, Close: 67.510002, Volume: 19323400 },
+  { Date: new Date("2022-05-31").getTime(), Open: 60.110001, High: 64.300003, Low: 55.099998, Close: 14.900002, Volume: 24134800 }
 ];
 
 @Component({
@@ -25,6 +49,7 @@ export class StockChartComponent implements OnInit {
 
   ngOnInit(): void {
     let root = am5.Root.new("chartdivstock");
+ //   root.dateFormatter.set("dateFormat","yyyy-MM-dd");
 /*     root.setThemes([
       am5themes_Animated.new(root)
     ]); */
@@ -73,13 +98,31 @@ export class StockChartComponent implements OnInit {
     let dateAxis = mainPanel.xAxes.push(am5xy.GaplessDateAxis.new(root, {
       baseInterval: {
         timeUnit: "day",
-        count: 1
+        count: 1,
       },
+/*       gridIntervals: [
+        { timeUnit: "day", count: 1 },
+        { timeUnit: "week", count: 1 },
+        { timeUnit :"month", count:1}
+      ], */
       renderer: am5xy.AxisRendererX.new(root, {})
     }));
+
+  //  dateAxis.get("dateFormats")["day"] = "MM/dd";
+  ///  dateAxis.get("periodChangeDateFormats")["day"] = "MMM";
+
+    
+
+    
+
+    
+
+    
     
     // Add series
     // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+
+   
     let valueSeries = mainPanel.series.push(am5xy.LineSeries.new(root, {
       name: "PEOPLE's",
       valueXField: "Date",
@@ -90,9 +133,15 @@ export class StockChartComponent implements OnInit {
       tooltip: am5.Tooltip.new(root, {
         labelText: "[bold] Number of {name} : {valueY}[/]\n On {valueX.formatDate().} "
       })
-    }));
+    }
+    ));
+
+    
+   
     
     valueSeries.data.setAll(data);
+
+   
     
     // Set main value series
     // https://www.amcharts.com/docs/v5/charts/stock-chart/#Setting_main_series
@@ -191,6 +240,7 @@ export class StockChartComponent implements OnInit {
       baseInterval: {
         timeUnit: "day",
         count: 1
+
       },
       renderer: am5xy.AxisRendererX.new(root, {})
     }));
