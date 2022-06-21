@@ -4,7 +4,8 @@
     <!-- <span><img  src="./assets/logo.png"  style="width:50px;"></span> -->
     <a   mat-button  routerLink="/home"  routerLinkActive="active"><mat-icon>home</mat-icon>Home</a>
     <a mat-button   routerLinkActive="active"   routerLink="/movie-list">Movie-List</a>
-    <a mat-button  routerLinkActive="active" (click)="takeMetoUserDashboard()">DashBoard</a>
+    <a mat-button  routerLinkActive="active" (click)="takeMetoUserDashboard()" 
+    [ngStyle]="{'color':isDashboard?'blue':''}"  >Dashboard</a>
     <span class="example-spacer"></span>
 
   <div  ngbDropdown class="dropdown">
