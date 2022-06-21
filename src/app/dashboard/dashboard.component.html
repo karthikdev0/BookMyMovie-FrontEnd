@@ -1,25 +1,34 @@
 
+
 <!-- 
+
+
+
 <p>username :  {{username}} ,  Role  : {{role}}</p> 
 -->
 
 <div>
     <div *ngIf="role == 'Standard'">
-        <button type="button" mat-raised-button routerLink="my-account">My Account details</button>
-        <button type="button" mat-raised-button routerLink="my-tickets-details">My Ticket details</button>
-        <button type="button" mat-raised-button routerLink="my-reviews">My Reviews</button>
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <button type="button" mat-button routerLinkActive="active" routerLink="my-account">My Account details</button>
+                <button type="button" mat-button routerLinkActive="active" routerLink="my-tickets-details">My Ticket details</button>
+                <button type="button" mat-button routerLinkActive="active" routerLink="my-reviews">My Reviews</button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+       
     </div>
-   
-   <br>
-   <br>
     <div *ngIf="role == 'Admin'">
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <button type="button"  mat-button routerLinkActive="active" routerLink="insert-movie-record">Manage Movie's</button>
+                <button type="button"  mat-button routerLinkActive="active" routerLink="charts">Movie Analytics</button>
+            </mat-toolbar-row>
+        </mat-toolbar>
        <!--  <button type="button" color="primary" mat-button (click)="toMoviePage()"> Movie Page</button> -->
-        <button type="button" color="primary" mat-raised-button routerLink="insert-movie-record"> Movie Page</button>
-        <button type="user" color="primary" mat-raised-button routerLink="charts">Analytics</button>
+      
 </div>
 </div>
-<br>
-
 <div class="container-fluid">
 <div class="col-md-12">
     <router-outlet></router-outlet>

@@ -37,11 +37,14 @@ this.username = localStorage.getItem("username");
   }
   logOut() {
 
-    confirm("Do you want to logout from Application");
+  let ans  =   confirm("Do you want to logout from Application");
+  if(ans){
     this.uService.isLoggedIn.next(false);
     localStorage.clear();
     this.uService.username.next('');
     this.router.navigate(['home']);
+  }
+    
  }
  isUserAuthenticated() {
   const token  = localStorage.getItem("token");
