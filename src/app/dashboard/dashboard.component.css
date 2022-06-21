@@ -5,3 +5,7 @@ table, th, td {
   .mat-raised-button{
     margin: 10px;
   }
+
+  .active{
+    color: blue;
+  }
