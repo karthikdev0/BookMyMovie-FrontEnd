@@ -116,7 +116,8 @@ export function tokenGetter() {
        // whitelistedDomains: ["localhost:5000"],
       //  blacklistedRoutes: []
       }
-    })
+    }),
+    
   ],
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent]

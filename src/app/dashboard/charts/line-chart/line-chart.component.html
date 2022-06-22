@@ -1,5 +1,5 @@
 <!-- <button mat-button color="primary" (click)="switchData()">{{toggleBtn?"Weekly":"Monthly"}}</button> -->
- <div class="row">
+ <div class="row" style="margin-top: 25px;">
     <div class="col col-md-10 offset-md-1">
         <form>
             <mat-radio-group [formControl]="dataControl" color="primary" aria-label="Select an option">
@@ -24,7 +24,7 @@
                     <mat-option *ngFor="let week of weeks" [value]="week">{{week}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <button type="submit" (click)="getChart()" mat-button>Submit</button>
+            <button type="submit" color="primary" (click)="getChart()" mat-raised-button>Submit</button>
         </form>
     </div>
 </div> 

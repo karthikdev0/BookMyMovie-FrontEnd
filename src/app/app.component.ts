@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 title = 'BookMyMovie';
 
 username:any;
+role:any;
 isLoggedIn : boolean = false;
 isDashboard :boolean  =  false;
   constructor(private route:ActivatedRoute,private router:Router,private jwtHelper: JwtHelperService,private uService:UserService) {  
@@ -24,6 +25,7 @@ isDashboard :boolean  =  false;
   this.uService.username.subscribe( res => this.username = res);
   this.uService.isLoggedIn.subscribe( res => this.isLoggedIn = res );
 this.username = localStorage.getItem("username");
+this.role  = localStorage.getItem("role");
     this.checkLoginStatus();
   }
 

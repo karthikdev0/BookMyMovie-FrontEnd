@@ -43,7 +43,7 @@ const routes: Routes = [
 
   children : [ 
     //{ path:'movie-insert',component:MovieComponent} ,
-  {path:'movie-edit',component:EditMovieComponent},
+    {path:'movie-edit',component:EditMovieComponent},
     { path:'my-account',component:MyAccountComponent},
     {path:'my-tickets-details',component:AllTicketDetailsComponent},
     {path:'insert-movie-record',component:InsertMovieRecordComponent},

@@ -4,8 +4,11 @@
     <!-- <span><img  src="./assets/logo.png"  style="width:50px;"></span> -->
     <a   mat-button  routerLink="/home"  routerLinkActive="active"><mat-icon>home</mat-icon>Home</a>
     <a mat-button   routerLinkActive="active"   routerLink="/movie-list">Movie-List</a>
-    <a mat-button  routerLinkActive="active" (click)="takeMetoUserDashboard()" 
-    [ngStyle]="{'color':isDashboard?'blue':''}"  >Dashboard</a>
+    <a *ngIf="isLoggedIn && role === 'Admin'" mat-button  routerLinkActive="active" [routerLink]= "['dashboard',username,'charts'] "  
+     >Dashboard</a>
+     <a *ngIf="isLoggedIn && role === 'Standard'" mat-button  routerLinkActive="active" [routerLink]= "['dashboard',username,'my-account'] "  
+     >Dashboard</a>
+     <!--[ngStyle]="{'color':isDashboard?'blue':''}" -->
     <span class="example-spacer"></span>
 
   <div  ngbDropdown class="dropdown">
