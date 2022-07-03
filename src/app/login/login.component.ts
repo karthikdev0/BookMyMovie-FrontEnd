@@ -58,7 +58,7 @@ userModel:any;
   //  console.log(form.value);
     this.loginModel.userName  = form.value.LuserName;
     this.loginModel.password = form.value.Lpassword;
-    console.log(this.loginModel);
+   // console.log(this.loginModel);
 
     this.userService.loginUser(this.loginModel).subscribe(
       (res) => {       
@@ -97,7 +97,7 @@ userModel:any;
        console.log(this.AuthUsername);
        localStorage.setItem("username",this.AuthUsername);
        localStorage.setItem("role",this.AuthUserRole);
-       this.router.navigate(['dashboard',this.AuthUsername]);
+       this.router.navigate(['home']);
        
      });
   // this.router.navigate(['dashboard',this.loginModel.userName]);

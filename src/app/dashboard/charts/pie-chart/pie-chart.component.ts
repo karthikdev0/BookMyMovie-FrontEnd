@@ -124,6 +124,15 @@ chart.data = data.filter( x => x.theatre === this.selectedTheatre);
 console.log(chart.data);
 chart.radius = 120;
 
+//console.log(this.selectedTheatre);
+let title  = chart.titles.create();
+title.text = this.selectedTheatre;
+title.fontSize = 20;
+
+
+
+
+
 // Add and configure Series
 var pieSeries = chart.series.push(new am4charts.PieSeries());
 pieSeries.dataFields.value = "seats";
@@ -212,8 +221,9 @@ pieSeries.slices.template.events.on("hit", function(ev){
       chart2.data = c2FilteredData[0];
       let title  = chart2.titles.create();
       if(this.selectedTitle !==  undefined){
-        title.text = this.selectedTitle.toUpperCase();
-        title.fontSize = 25;
+        title.text = this.selectedTitle;
+        //title.text ='';
+        title.fontSize = 20;
       }
       if(this.selectedTitle === ''){
         title.text = '';
