@@ -85,11 +85,6 @@ movieFilter:movieFilter = {
     this.movieFilter.title = this.title;
     this.isTitleNull();
     this.movieFilter.rating  = +this.ratings;
-/*     if(this.disableSelect.value){
-    this.movieFilter.tags = this.tagsList;
-    }else{
-     this.movieFilter.tags = this.tagsControl.value;
-     } */
 console.log(this.allSelected.selected);
 console.log(this.tagsControl.value.length)
      if(this.allSelected.selected){

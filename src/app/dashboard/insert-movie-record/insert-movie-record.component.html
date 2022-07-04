@@ -1,11 +1,10 @@
-<!--<app-movie></app-movie> -->
+
 <a routerLink="/movie-list" mat-button color="primary">Movie List Page</a>
 <form  autocomplete="off" [formGroup]="movieForm" (ngSubmit)="saveDetails(movieForm)" class="form-container">
     <mat-card>
       <mat-card-header>
         <mat-card-title>Movie Form</mat-card-title>
-       <!--  <span *ngIf="ngForm.submitted && !registrationForm.valid" class="small-font"
-        [ngClass]="{'invalid': ngForm.submitted }">* required</span> -->
+
       </mat-card-header>
       <mat-card-content>
         <div class="row">
@@ -17,10 +16,6 @@
             </mat-form-field>
           </div>
           <div class="col-md-6">
-<!--             <mat-form-field class="full-width">
-              <mat-label>Ratings</mat-label>
-              <input formControlName="ratings" type="number" max="5" min="1" matInput placeholder="Ratings">
-            </mat-form-field> -->
           </div>
         </div>
         <div class="row">

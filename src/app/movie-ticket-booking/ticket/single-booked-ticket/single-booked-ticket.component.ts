@@ -38,7 +38,7 @@ export class SingleBookedTicketComponent implements OnInit {
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
     this.ticket = history.state.ticket;
-    console.log(this.ticket)
+   // console.log(this.ticket)
 
   }
 

@@ -37,16 +37,8 @@ export class TicketComponent implements OnInit {
   constructor(private route:ActivatedRoute,private location:Location,private router:Router) { }
 
   ngOnInit(): void {
-//console.log(this.location.getState())
   this.username = localStorage.getItem('username');
-//this.ticketPrintArray = this.location.getState();
-//console.log(history.state)
 this.ticket = history.state.TicketArray;
-//this.ticket = history.state.ticket;
-console.log(this.ticket)
-//console.log(this.ticketPrintArray)
-
- //this.route.params.subscribe( params => console.log(params));
   }
 
   takeMetoDashBoard(){

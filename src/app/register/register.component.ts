@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
   
  
    onSubmit() {
-    console.log('form data is ', this.registrationForm);
+   // console.log('form data is ', this.registrationForm);
    }
 
    onPasswordChange() {
@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
 
    saveDetails(form: { value: any; }) {
   //  alert('SUCCESS!! :-)\n\n' + JSON.stringify(form.value, null, 4));
-  console.log(form.value);
+  //console.log(form.value);
   
   this.userData.userName  = form.value.userName;
   this.userData.password  = form.value.password;
@@ -98,7 +98,7 @@ export class RegisterComponent implements OnInit {
 
   this.uService.registerUserDetails(this.userDetailsData).subscribe(
     (res) => {
-      console.log(res);
+    //  console.log(res);
       this.router.navigate(['login']);
     }
   );

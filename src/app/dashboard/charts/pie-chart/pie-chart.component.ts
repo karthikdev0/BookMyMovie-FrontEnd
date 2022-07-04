@@ -111,20 +111,10 @@ export class PieChartComponent implements OnInit , AfterViewInit{
   
 
   ngAfterViewInit() {
-    //console.log("2" + this.selectedTheatre);
-    
-
-/* if(this.chart){
-  this.chart.align = left;  
-} */
-   // Create chart instance
 var chart = am4core.create("chartdivpie", am4charts.PieChart);
 
 chart.data = data.filter( x => x.theatre === this.selectedTheatre);
-console.log(chart.data);
 chart.radius = 120;
-
-//console.log(this.selectedTheatre);
 let title  = chart.titles.create();
 title.text = this.selectedTheatre;
 title.fontSize = 20;
@@ -152,45 +142,22 @@ let as = pieSeries.slices.template.states.getKey("active");
 if(as !== undefined){
   as.properties.shiftRadius = 0;
 }
-
-
 let ds = pieSeries.slices.template.states.getKey("default");
 if(ds){
   ds.properties.scale = 1;
 }
 
-
-//console.log(pieSeries.slices.template._dataItem?.component?.isActive.valueOf);
-
 console.log(this.selectedTheatre);
-
-//let title  = chart.titles.create(); 
-//title.text = "Total Number of Seats Booked " + this.selectedTheatre.toUpperCase();
-//title.fontSize = 25;
-
-
-
 
 chart.legend = new am4charts.Legend();
 
 this.chart = chart;
-///this.chart.align = 'left';
 
-//let bullet  = pieSeries.bullets.push(new am4core.Sprite());
-//bullet.tooltipText = "Month : {categoryX} \n collection:{valueY} \n title: {name} ";
 
 pieSeries.slices.template.propertyFields.isActive="pulled";
-
-console.log(pieSeries.slices.values);
 let slicesValues =  pieSeries.slices.values;
-console.log(slicesValues);
-/* slicesValues.forEach( x => {
-  console.log("2");
-  console.log(x);
-}); */
-/* if(pieSeries.slices.template.propertyFields.isActive === "pulled"){
 
-} */
+
 
 pieSeries.slices.template.events.on("hit", function(ev){
   
@@ -199,12 +166,6 @@ pieSeries.slices.template.events.on("hit", function(ev){
  let chart2 = am4core.create("chartdivpie2", am4charts.PieChart);
   console.log(ev.target.dataItem?.dataContext);
   let context:any = ev.target.dataItem?.dataContext;
-
- // chart2.align = right;
-  
-
-
- // let selectedTitle='';
 
   let c2FilteredData = data.filter( x => {
             this.selectedTitle = context.title;
@@ -229,37 +190,7 @@ pieSeries.slices.template.events.on("hit", function(ev){
         title.text = '';
       }
      
-/*  if(ev.target.dataItem?.values['value']['value'] == 70){
-   let title  = chart2.titles.create();
-  title.text ="movie 1";
-  title.fontSize = 25;
-   chart2.data = [
-  {"title":"silver seats","seats":20},
-  {"title":"gold seats","seats":30},
-  {"title":"platium seats","seats":20},
-];
- }
- else if(ev.target.dataItem?.values['value']['value'] == 100){
-  let title  = chart2.titles.create();
-  title.text ="movie 2";
-  title.fontSize = 25;
-  chart2.data = [
-    {"title":"silver seats","seats":30},
-    {"title":"gold seats","seats":50},
-    {"title":"platium seats","seats":20},
-  ];
- }
- else if(ev.target.dataItem?.values['value']['value'] == 50){
-  let title  = chart2.titles.create();
-  title.text ="movie 4";
-  title.fontSize = 25;
-  
-  chart2.data = [
-    {"title":"silver seats","seats":15},
-    {"title":"gold seats","seats":30},
-    {"title":"platium seats","seats":5},
-  ];
- } */
+
 
  chart2.radius = 120;
 

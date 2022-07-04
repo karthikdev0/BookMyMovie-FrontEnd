@@ -45,9 +45,6 @@ export class WriteReviewComponent implements OnInit {
   }
 
   submitReview(){
- //   this.review.review_Content= this.reviewContent;
-//    this.review.rating = this.starRating;
- //   this.review.userId = this.userId;
     this.review = {
       review_Content : this.reviewContent,
       reviewId :this.reviewModel.reviewId,
@@ -55,11 +52,10 @@ export class WriteReviewComponent implements OnInit {
       rating :this.starRating,
       userId :this.reviewModel.userId
     }
-    console.log(this.review);
+
 
     this.uService.insertReview(this.review).subscribe(
       res => {
-        console.log(res);
         this.isSubmitClicked.emit(true);
       }
     )

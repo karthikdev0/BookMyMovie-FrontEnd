@@ -27,14 +27,14 @@ export class RecommendedMoviesComponent implements OnInit {
     this.gService.FilterMovieByTags(tags).subscribe(
       (res) =>{
         this.movieList1 = res as [];
-        console.log(this.movieList1);
+       
       }
     ) 
 
     this.gService.FilterMovieByRatings(3).subscribe(
       (res) => {
         this.movieList2 = res as [];
-       // console.log(this.movieList2);
+      
       }
     )
 

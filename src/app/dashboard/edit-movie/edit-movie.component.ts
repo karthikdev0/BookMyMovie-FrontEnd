@@ -70,9 +70,6 @@ export class EditMovieComponent implements OnInit {
   }
 
   public returnImgPath = () => {
-
-    //return `https://localhost:7254/${serverPath}`;
-   // var path =  this.mService.getMovieImagePath(this.response.dbPath);
 var mpath ='';
    if(this.disablePosterUpload.value === true){
     mpath = this.moviePosterPath;
@@ -89,7 +86,6 @@ var mpath ='';
 
      this.movie.id = this.movieId
      this.movie.title = form.value.title;
-    // this.movie.ratings = form.value.ratings;
     this.movie.ratings = this.rating;
      this.movie.description = form.value.description;
      this.movie.releaseDate = form.value.releaseDate;
@@ -108,7 +104,7 @@ var mpath ='';
     }
      this.movie.isDeleted = false;
 
-     console.log(this.movie);
+   
 
      this.mService.updateMovie(this.movie).subscribe(
        (res)=>{

@@ -90,17 +90,14 @@ confirmstr:string='';
 
 
   ngOnChanges(changes: SimpleChanges): void {
-  //  console.log(changes['theatreDetails'].currentValue);
+
     this.theatreDetailsReceived = changes['theatreDetails'].currentValue;
-   // console.log(this.selScreenDataByDate)
+
     this.selScreenDataByDate[0] = (this.theatreDetailsReceived.filter( x => x.screenDate === this.today))
-  //  console.log(this.selScreenDataByDate)
+
     this.selScreenDataByDate[1] = (this.theatreDetailsReceived.filter( x => x.screenDate === this.nextDay))
-  //  console.log(this.selScreenDataByDate)
+
     this.selScreenDataByDate[2] = (this.theatreDetailsReceived.filter( x => x.screenDate === this.nextNextDay))
-   // console.log(this.selScreenDataByDate[0][0].screenId)
-   // this.selectedTheatreScreenData = this.theatreDetailsReceived.filter( x => x.screenDate ===this.today)
-    //console.log(this.selectedTheatreScreenData)
  this.calculatePrice(this.selectedSeat.filter( x => x.isSelected === true))
   } 
 
@@ -149,17 +146,7 @@ confirmstr:string='';
    
   }
 
-  /* getScreens( val :Date){
 
-    var datePipe = new DatePipe('en-US');
-    let d = datePipe.transform(val, 'dd-MM-yyyy');
-  //  console.log(d);
-   // console.log(datePipe.transform(d,'dd-MM-yyyy'));
-//console.log(d);
-//this.theatreDetailsReceived.forEach( x => console.log(x.screenDate));
-  this.selectedTheatreScreenData = this.theatreDetailsReceived.filter( x => x.screenDate ===d)
- // console.log(this.selectedTheatreScreenData);
-  } */
 
 today:any;
 nextDay:any;
@@ -198,9 +185,6 @@ seatsDataStr:string='';
                       + 'Seat class : Gold '  +  'Price : ' +screen.goldSeatPrice +', Available Seats ' + screen.goldSeatCount +'. \n' 
                       + 'Seat class : Platinum '  +  'Price : ' +screen.platinumSeatPrice +', Available Seats ' + screen.platinumSeatCount +'. \n';
  
-/*       this.seatsDataStr = 'Rs. ' + screen.silverSeatPrice + '        ' + 'Rs. ' + screen.goldSeatPrice+ '        ' + 'Rs. ' + screen.platinumSeatPrice + ' \n'
-                           + '         Silver              ' + '                    Gold                            ' +'              Platinum           ' +' \n'
-                          + '             '   +screen.silverSeatCount    + '          '   +screen.goldSeatCount      + '          '   +screen.platinumSeatCount +' \n' ; */
 
   }
 
@@ -273,7 +257,7 @@ this.openCompDialog(this.confirmstr);
         }
 var str  = this.selectedTheatreData.screenDate.split('-');
 var fmtstr = str[2] + '-'+str[1]+'-'+str[0];
-console.log(fmtstr)
+//console.log(fmtstr)
 
         this.ticketModel = {
           numOfseat : seatArray.length,
@@ -284,7 +268,7 @@ console.log(fmtstr)
           screenId:this.selectedTheatreData.screenId,
           seatNumber: seatArray
         }
-        console.log(this.ticketModel)
+      //  console.log(this.ticketModel)
 
 
   }
@@ -295,7 +279,7 @@ console.log(fmtstr)
     config.verticalPosition = 'top';
     config.duration = 5000;
       this.tService.ticketBooking(this.ticketModel).subscribe( (res) => {
-      console.log(res);
+      //console.log(res);
       var t:TicketSucess[]  = res as [];
       this.snackBar.open('Ticket booked successfully','x',config);
      // this.router.navigate(['ticket'],{state:t})
@@ -312,14 +296,9 @@ console.log(fmtstr)
       if(res.event === 'yes-option'){
         this.setTicketData();
         this.bookTicket();
-          console.log('yes')
+          //console.log('yes')
       }
       else if(res.event === 'no-option'){
-        
-        console.log('no')
-      //  this.confirmstr='';
-      //  this.price=0;
-      //  this.seatsDataStr='';
         this.selectedSeat=[];
         return;
       }

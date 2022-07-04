@@ -32,7 +32,7 @@ export class MovieRecommendationComponent implements OnInit ,OnChanges {
       //console.log(this.tags)
       this.gService.RecommendMovieByTags({movieId:id,tags:this.tags[0]}).subscribe(
         (res) => {
-          console.log(res);
+        //  console.log(res);
           this.movies = res as [];
         }
       )

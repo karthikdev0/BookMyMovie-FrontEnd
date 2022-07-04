@@ -32,127 +32,6 @@
 
   </div>  
   <br> 
-<!-- <div class="container">
-    <div  class="row">
-      <div class="col-md-4">
-        <app-movie-filter></app-movie-filter>
-        
-
-      <mat-card class="movie-filter-card">
-  <mat-card-header>
-  <table>
-    <tr>
-      <td>
-        <mat-form-field>
-          <input  matInput  placeholder="Movie Title/Default all" id="title"   name="title" [(ngModel)]="title" >
-        </mat-form-field>
-      </td>
-    </tr>
-   <tr>
-      <td>
-        <mat-form-field>
-          <input  matInput  placeholder="Movie Rating/Default All" id="rating" 
-       type="number"
-       min="0" max="5"
-          name="rating" [(ngModel)]="ratings">
-        </mat-form-field>
-      </td>
-    </tr> 
-    <tr>
-      <td>
-        <mat-label>Ratings</mat-label>
-        <mat-slider
-  thumbLabel
-  [(ngModel)]="ratings"
-  tickInterval="1"
-  step="1"
-  min="0"
-  max="5"
-  aria-label="units"></mat-slider>
-      </td>
-    </tr>
-    
-      <tr>
-        <td>
-          <p>
-            <mat-checkbox [formControl]="disableSelect">All Tags</mat-checkbox>
-          </p>
-          <mat-form-field appearance="fill">
-          <mat-label>Tags</mat-label>
-          <mat-select [formControl]="tagsControl" [disabled]="disableSelect.value" multiple>
-          <mat-option *ngFor="let tag of tagsList" [value]="tag">{{tag}}</mat-option>
-          </mat-select>
-          </mat-form-field>
-          <td>
-        <tr>
-    
-
-  </table>
-  <mat-card-content>         
-    <mat-card-actions>
-        <button mat-flat-button (click)="doFilter()"  color="primary">Filter</button>
-    </mat-card-actions>
-</mat-card-content>
-
-</mat-card-header>
-      </mat-card>
-        
-
-
-      </div>
-      <div class="col-md-8">
-        <div class="card mb-3 m-10">
-          <mat-card  style="max-width: 540px; margin: auto;" *ngIf="movies.length == 0">
-            <mat-card-content>
-              <div *ngIf="movies.length == 0" >
-                <mat-progress-bar mode="query"></mat-progress-bar>
-                <br>
-                <br>
-                <br>
-                  <p>No movies available for this filter.Please change the filter and try again</p>
-                  <p>Or check your internet connection</p>
-              </div>
-            </mat-card-content>
-          </mat-card>
-            <div  *ngFor="let movie of movies">  
-          
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img [src]="createImgPath(movie.posterImgPath)" class="img-fluid rounded-start" alt="movie-poster">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{movie.title | uppercase}}</h5>
-                    <p class="card-text" style="font-size: small;">{{movie.description.substring(0,150) }} 
-                      <a style="text-decoration: none;" matTooltip= {{movie.description}} >.....</a></p>
-                    <p class="card-text">Tags -- {{movie.tags.replaceAll(',',' ')}}</p> 
-                    <p class="card-text"> Tags --   <strong>  {{movie.tags | uppercase}} </strong> </p>
-                    <p class="card-text"><small class="text-muted">Movie Rating  - {{movie.ratings}} , Movie Release Date - {{movie.releaseDate | date}}</small></p>
-                   <button  mat-button  (click)="getTheatres(movie.id)" >Available in </button>
-                    <p [ngStyle]="{'display':toggleTheatreData? 'none':'block'}"
-                     class="card-text" *ngIf="tList != null">{{tList}}</p> 
-                    <div *ngIf="role != 'Admin';else adminBlock">
-                      <a (click) = "redirectToBookingPage(movie)" mat-button color="primary">More Info</a>
-                      <a color="primary" mat-flat-button (click)="openTicketController(movie.id)" >Book Ticket Now</a>
-                    </div>
-                    <ng-template #adminBlock>
-                      <a  mat-flat-button (click)="ToEditpage(movie)" color="primary"><mat-icon>edit</mat-icon>Edit</a>
-                      <a  mat-flat-button (click)="ToDeletePage(movie)" color="warn"><mat-icon>delete</mat-icon>Delete</a>
-                    </ng-template>
-                  
-                  </div>
-                </div>
-              </div>
-              <br>
-              <br>
-          </div>
-         
-
-      </div>
-      
-      </div>
-    </div>
-</div> -->
 
 
 
@@ -160,37 +39,6 @@
 
 
 
-
-
-<!-- <mat-card *ngFor="let movie of movies">
-  <mat-card-content  >
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="col-sm-2">
-          <img [src]="createImgPath(movie.posterImgPath)" class="img-fluid rounded-start" alt="movie-poster">
-        </div>
-        <div class="col-sm-4">
-          <h5 class="card-title">{{movie.title | uppercase}}</h5>
-          <p class="card-text" style="font-size: small;">{{movie.description.substring(0,150) }} 
-            <a style="text-decoration: none;" matTooltip= {{movie.description}} >.....</a></p>
-          <p class="card-text"> Tags --   <strong>  {{movie.tags | uppercase}} </strong> </p>
-          <p class="card-text"><small class="text-muted">Movie Rating  - {{movie.ratings}} , Movie Release Date - {{movie.releaseDate | date}}</small></p>
-        </div>
-      </div>
-
-    </div>
-  </mat-card-content>
-  <mat-card-actions  >
-    <div *ngIf="role != 'Admin';else adminBlock">
-      <a (click) = "redirectToBookingPage(movie)" mat-button color="primary">More Info</a>
-      <a color="primary" mat-flat-button (click)="openTicketController(movie.id)" >Book Ticket Now</a>
-    </div>
-    <ng-template #adminBlock>
-      <a  mat-flat-button (click)="ToEditpage(movie)" color="primary"><mat-icon>edit</mat-icon>Edit</a>
-      <a  mat-flat-button (click)="ToDeletePage(movie)" color="warn"><mat-icon>delete</mat-icon>Delete</a>
-    </ng-template>
-  </mat-card-actions>
-</mat-card> -->
 
 <div class="container-fluid">
 <div class="row">
@@ -200,29 +48,6 @@
   <div class="col-sm-9">
     <div class="row"  >
       <div style="display: flex">
-       <!--  <span>Sort By   </span> -->
-<!--         <mat-form-field appearance="standard">
-          <mat-label >Sort By</mat-label>
-          <mat-select multiple="false" >
-            <mat-option value="">--select--</mat-option>
-            <mat-option   [value]="titleCheck">
-              <mat-checkbox (change)="sortByTitle()" 
-               [(ngModel)]="titleCheck">{{titleCheck?"Title Ascending":"Title Descending"}}
-              </mat-checkbox>
-            </mat-option>
-            <mat-option [value]="releaseDateCheck">
-              <mat-checkbox (change)="sortByReleaseDate()" [(ngModel)]="releaseDateCheck">
-                {{releaseDateCheck?"Release Date Ascending":"Release Date Descending"}}
-              </mat-checkbox>
-            </mat-option>
-            <mat-option [value]="ratingsCheck">
-              <mat-checkbox (change)="sortByRatings()" [(ngModel)]="ratingsCheck">
-                {{ratingsCheck?"Ratings Ascending":"Ratings Descending"}}
-              </mat-checkbox>
-            </mat-option>
-          </mat-select>
-        </mat-form-field> -->
-
         <mat-form-field appearance="standard">
           <mat-label>Sort By</mat-label>
           <mat-select >

@@ -49,10 +49,6 @@ export class StockChartComponent implements OnInit {
 
   ngOnInit(): void {
     let root = am5.Root.new("chartdivstock");
- //   root.dateFormatter.set("dateFormat","yyyy-MM-dd");
-/*     root.setThemes([
-      am5themes_Animated.new(root)
-    ]); */
     let stockChart = root.container.children.push(
     am5stock.StockChart.new(root,  {
       stockPositiveColor: am5.color(0x999999),
@@ -100,11 +96,6 @@ export class StockChartComponent implements OnInit {
         timeUnit: "day",
         count: 1,
       },
-/*       gridIntervals: [
-        { timeUnit: "day", count: 1 },
-        { timeUnit: "week", count: 1 },
-        { timeUnit :"month", count:1}
-      ], */
       renderer: am5xy.AxisRendererX.new(root, {})
     }));
 
@@ -147,68 +138,6 @@ export class StockChartComponent implements OnInit {
     // https://www.amcharts.com/docs/v5/charts/stock-chart/#Setting_main_series
     stockChart.set("stockSeries", valueSeries);
     
-    // Add a stock legend
-    // https://www.amcharts.com/docs/v5/charts/stock-chart/stock-legend/
-   // let valueLegend = mainPanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
-   //   stockChart: stockChart
-   // }));
-   // valueLegend.data.setAll([valueSeries]);
-    
-    /**
-     * Secondary (volume) panel
-     */
-    
-    // Create a main stock panel (chart)
-    // https://www.amcharts.com/docs/v5/charts/stock-chart/#Adding_panels
-   // let volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
-   //   wheelY: "zoomX",
-   //   panX: true,
-   //   panY: true,
-   //   height: am5.percent(30)
-  //  }));
-    
-    // Create axes
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-  //  let volumeValueAxis = volumePanel.yAxes.push(am5xy.ValueAxis.new(root, {
-  //    numberFormat: "#.#a",
- //     renderer: am5xy.AxisRendererY.new(root, {})
- //   }));
-    
- //   let  volumeDateAxis = volumePanel.xAxes.push(am5xy.GaplessDateAxis.new(root, {
- //     baseInterval: {
- //       timeUnit: "day",
- //       count: 1
- //     },
- //     renderer: am5xy.AxisRendererX.new(root, {})
- //   }));
-    
-    // Add series
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
- //   let volumeSeries = volumePanel.series.push(am5xy.ColumnSeries.new(root, {
- //     name: "PEOPLE's",
- //     valueXField: "Date",
- //     valueYField: "Volume",
- //     xAxis: volumeDateAxis,
- //     yAxis: volumeValueAxis,
- //     legendValueText: "{valueY}",
-//      tooltip: am5.Tooltip.new(root, {
- //       labelText: "[bold] Number of {name} : {valueY}[/]\n On {valueX.formatDate()} "
- //     })
- //   }));
-    
-  //  volumeSeries.data.setAll(data);
-    
-    // Set main value series
-    // https://www.amcharts.com/docs/v5/charts/stock-chart/#Setting_main_series
-   // stockChart.set("volumeSeries", volumeSeries);
-    
-    
-    // Add a stock legend
-    // https://www.amcharts.com/docs/v5/charts/stock-chart/stock-legend/
-    //let volumeLegend = volumePanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
-    //  stockChart: stockChart
-    //}));
-   // volumeLegend.data.setAll([volumeSeries]);
     
     
     // Add cursor(s)
@@ -220,12 +149,7 @@ export class StockChartComponent implements OnInit {
       snapToSeriesBy: "y!"
     }));
     
- //   volumePanel.set("cursor", am5xy.XYCursor.new(root, {
- //     yAxis: volumeValueAxis,
- //     xAxis: volumeDateAxis,
- //     snapToSeries: [volumeSeries],
- ///     snapToSeriesBy: "y!"
- //   }));
+ 
     
     
     // Add scrollbar

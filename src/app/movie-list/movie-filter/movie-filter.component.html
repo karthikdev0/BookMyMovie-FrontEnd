@@ -20,34 +20,8 @@
           <mat-label>Ratings</mat-label>
           &nbsp;&nbsp;&nbsp;
           <ngb-rating [max]="5"  [(rate)]="ratings" [readonly]="false"></ngb-rating>
-  <!--         <mat-slider
-        
-        thumbLabel 
-        [(ngModel)]="ratings"
-        tickInterval="1"
-        step="1"
-        min="0"
-        max="5"
-        aria-label="units"></mat-slider> 
-        {{ratings}} -->
         <br>
-
     </form>
-  <!--     <tr>
-  <td>
-    <mat-form-field>
-      <input  matInput  placeholder="Movie Rating/Default All" id="rating" 
-   type="number"
-   min="0" max="5"
-      name="rating" [(ngModel)]="ratings">
-    </mat-form-field>
-  </td>
-  </tr> -->
-  
-  
-  <!--           <p>
-        <mat-checkbox [formControl]="disableSelect">All Tags</mat-checkbox>
-      </p> -->
   </mat-card-content>
       <mat-card-actions>
           <button mat-flat-button (click)="doFilter()"  color="primary">Filter</button>

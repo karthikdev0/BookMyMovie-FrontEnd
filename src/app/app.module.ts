@@ -59,8 +59,6 @@ export function tokenGetter() {
     RecommendedMoviesComponent,
     FooterComponent,
     WriteReviewComponent,
-    
-
   ],
   imports: [
     BrowserModule,

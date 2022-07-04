@@ -136,8 +136,8 @@ disableSelect  = new FormControl(true);
   }
 
   sortByReleaseDate(){
-    console.log(this.releaseDateCheck);
-    console.log(this.movies);
+   // console.log(this.releaseDateCheck);
+   // console.log(this.movies);
     if(this.releaseDateCheck){
       this.sortedData = this.sortedData.sort( (a,b) =>{
      //   console.log(new Date(a.releaseDate).getTime())
@@ -159,7 +159,7 @@ disableSelect  = new FormControl(true);
       }
       
       );
-      console.log(this.sortedData);
+     // console.log(this.sortedData);
       this.dataSource.connect().next(this.sortedData);
       this.releaseDateCheck = !this.releaseDateCheck;
     }
@@ -180,7 +180,7 @@ disableSelect  = new FormControl(true);
            return 0;
          }
         });
-        console.log(this.sortedData);
+        //console.log(this.sortedData);
         this.dataSource.connect().next(this.sortedData);
         this.releaseDateCheck = !this.releaseDateCheck;
   } 
@@ -189,54 +189,20 @@ disableSelect  = new FormControl(true);
 
 
   sortByTitle(){
- //   console.log(this.titleCheck);
- //   console.log(this.dataSource.connect());
-//    console.log(this.obs);
-//console.log(this.titleCheck);
-console.log(this.movies);
     if(this.titleCheck){
-    //  console.log(this.titleCheck);
+
       this.sortedData = this.sortedData.sort( 
         (a,b) => a.title.localeCompare(b.title));
- //     console.log(data);
- //     console.log(this.dataSource.connect());
       this.dataSource.connect().next(this.sortedData);
-  //this.obs.next(data);
-  //    console.log(this.dataSource.connect());
-  //    console.log(this.obs);
-   
-   // this.obs.subscribe( res => {
-  //      console.log(res);
-   //   data =   res.sort( (a,b) => a.title.localeCompare(b.title));
-   //  
-   //   });
-      
-
-  //    this.dataSource.data = data;
-   //   this.movies = data;
-  // this.changeDetectorRef.detectChanges();
-   //   this.dataSource.paginator = this.paginator;
-    //  this.obs = this.dataSource.connect();
-    // console.log(this.obs);
-   //  console.log(this.dataSource.connect())
    this.titleCheck = ! this.titleCheck;
-  // console.log(this.titleCheck);
+
     }
     else{
       this.sortedData = this.sortedData.sort( (a,b) =>
        b.title.localeCompare(a.title));
-   //   this.obs.subscribe( res => {
-   //     data = res.sort( (a,b) => b.title.localeCompare(a.title));
-       // this.dataSource.connect().next(data);
-    //  })
-   //   console.log(data);
-    //  console.log(this.dataSource.connect());
      this.dataSource.connect().next(this.sortedData);
      this.titleCheck = ! this.titleCheck;
-  //   console.log(this.titleCheck);
-    //  console.log(this.dataSource.connect());
     }
-  //  this.titleCheck = ! this.titleCheck;
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -257,7 +223,7 @@ console.log(this.movies);
 
 private getAlltitles = () => {
   this.mService.getAllMovieTitles().subscribe( res => {
-    console.log(res);
+    //console.log(res);
     this.options = res ;
   });
 }
@@ -277,13 +243,13 @@ public redirectToBookingPage(movie:Movie){
 openTicketController(id:number){
   this.tService.getTheatreDetails(id).subscribe( (res) => {
     this.availableTheatreDetails =  res as [];
-    console.log(res);
+    //console.log(res);
     const dialogConfig  = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = this.availableTheatreDetails;
   
-    console.log(this.availableTheatreDetails);
+   // console.log(this.availableTheatreDetails);
     this.dialog.open(TicketBookingModalComponent,dialogConfig);
   });
 
@@ -300,7 +266,7 @@ searchByTitle(){
 }
 
 getFilteredMovies(movie:Movie[]){
-  console.log(movie);
+  //console.log(movie);
 this.movies = movie;
 }
 
@@ -316,7 +282,7 @@ doFilter(){
          }
   
 
-    console.log(this.movieFilter);
+   // console.log(this.movieFilter);
     this.service.FilterMovieByParam(this.movieFilter).subscribe(
         res => {
         this.movies = res as []
@@ -329,13 +295,13 @@ getTheatres(id:number){
   this.mService.getTheatreNameByMovieId(id).subscribe( (res) =>  {
     this.tList = res as [];
     
-    console.log(this.tList);
+   // console.log(this.tList);
   //  return this.tList;
   });
 }
 
 ToEditpage(movie:Movie){
-    console.log(movie);
+  //  console.log(movie);
     this.mService.movieToEdit.next(movie);
     this.router.navigate(['../dashboard/'+this.username+'/movie-edit']);
 }
@@ -343,7 +309,7 @@ ToDeletePage(movie:Movie){
   confirm('Do you want to delete this movie');
   this.mService.deleteMovieById(movie.id).subscribe(
     (res) => {
-      console.log("Deleted succesfully "+res);
+   //   console.log("Deleted succesfully "+res);
       this.getmovies();
       alert('deleted successfully');
     }

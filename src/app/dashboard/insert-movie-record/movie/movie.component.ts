@@ -70,10 +70,7 @@ export class MovieComponent implements OnInit {
   }
 
   private getmovies = () => {
-  /*   this.http.get('https://localhost:7254/movie/getAll')
-    .subscribe(res => {
-      this.movies = res as [];
-    }); */
+
 
      this.movieService. getAllMovies().subscribe((res) => {
       this.movies = res as [];

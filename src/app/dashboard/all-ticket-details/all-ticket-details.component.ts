@@ -65,9 +65,6 @@ export class AllTicketDetailsComponent implements OnInit,AfterViewInit {
      this.userDetails =  JSON.parse(details);
     }
     this.getUserTicketDetails();
-   // this.userService.getMovieReviewByuserId()
- //  this.cdr.detectChanges(); 
- //  this.dataSource.paginator = this.paginator;
   }
 
   addRating(movieId:number){
@@ -81,14 +78,11 @@ export class AllTicketDetailsComponent implements OnInit,AfterViewInit {
      this.userService.getUserTicketDetails(this.userDetails.userId).subscribe(
       (res) => { 
         this.ticketsDetails = res as [];
-         // console.log(this.ticketsDetails);
        this.ticketSource.data = this.ticketsDetails;
-     //   console.log(this.ticketSource.data);
       }
     ) 
     this.tService.getAllTicketTitle(this.userDetails.userId).subscribe(
       (res) => {
-        console.log(res);
         this.ticketTitle =  res as [];
       }
     )
@@ -97,12 +91,6 @@ title:string='';
   getFullTicketDetails(title:string){
     this.isClicked = !this.isClicked;
     this.title = title;
-/*     this.tService.getFullTicketDetails(this.userDetails.userId,title).subscribe(
-      (res) => {
-        console.log(res);
-        this.ticketsDetails = res as [];
-      }
-    ) */
   }
 
   toWriteReview(ticket :TicketSucess){
@@ -115,7 +103,6 @@ title:string='';
       movieId: ticket.movieId,
       userId: this.userDetails.userId
     }
-    //dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width =  '600px',
     dialogConfig.height =  '400px',
@@ -123,34 +110,20 @@ title:string='';
      reviewModel:review
     };
     this.dialog.open(ReviewModalComponent,dialogConfig)
-  //  this.router.navigate(['../write-review'], {relativeTo:this.route,state:{movieId:movieId,userId:userId}}  );
   }
   
 
 
 
   updateRating(id:number){
-
-    console.log(this.ratingControl.value);
-    console.log(id);
-
-    this.reviewModel ={
+  this.reviewModel ={
       reviewId: 0,
-   // rating: this.ratingControl.value,
    rating:this.starRating,
     review_Content: '',
     movieId: id,
-  //  userId: this.ticketsDetails[0].userId
   userId:this.userDetails.userId
     }
-
-    console.log(this.reviewModel);
-
    this.userService.insertReview(this.reviewModel).subscribe( res => console.log(res));
-   // this.mService.updateMovieRating(this.ratingControl.value,id)
-    //.subscribe( res => console.log(res));
-
-
   }
 
   getUserRating(userId:number,movieId:number){

@@ -19,7 +19,6 @@ role:any;
 
 username:any;
   ngOnInit(): void {
-  //  this.route.params.subscribe( params => this.username= params['username']);
     this.username = localStorage.getItem("username");
     this.role = localStorage.getItem("role");
   }

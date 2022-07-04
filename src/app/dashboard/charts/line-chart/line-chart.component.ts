@@ -184,10 +184,7 @@ console.log(data);
 
 
 getChart(){
-/*       console.log(this.dataControl.value);
-      console.log(this.monthsControl.value);
-      console.log(this.movieControl.value);
-      console.log(this.weeksControl.value); */
+
   
      let WeeklyFilteredData: any[]=[];
 
@@ -195,11 +192,8 @@ getChart(){
 
      if(this.dataControl.value === 'weekly'){
        let weeks = this.weeksControl.value;
-    //   let movies  =  this.movieControl.value as [];
-
        let moviesNameList :any[]=[];
       for (let key2 in weekData[0]){
-          // console.log(key2);
           if(key2 !== 'week'){
             moviesNameList.push(key2);
           }       
@@ -210,7 +204,7 @@ getChart(){
 
 
 
-  //   let movies  =  weekData.
+ 
        weeks.forEach((element: string) => {
          weekData.forEach( val => {
           if(element === val.week){
@@ -218,7 +212,6 @@ getChart(){
            }
          })
        });
-   //   console.log(data); 
     this.chart  = am4core.create("chartdiv",am4charts.XYChart);
     let title  =  this.chart.titles.create();
     title.text = "Total collection by movie";
@@ -261,24 +254,21 @@ getChart(){
       let months = this.monthsControl.value;
       let moviesNameList :any[]=[];
       for (let key2 in weekData[0]){
-   // console.log(key2);
         if(key2 !== 'month')
         moviesNameList.push(key2);
       }
-     // let movies  =  this.movieControl.value as [];
+
      let movies  =  moviesNameList as [];
       let MonthlyFilteredData: any[]=[];
       months.forEach((element:any) => {
         Monthdata.forEach( val => {
-         /*  console.log(element);
-          console.log(val.month);  */
          if(element === val.month){
           MonthlyFilteredData.push(val);
           }
         })
       });
  
-    // console.log( MonthlyFilteredData); 
+
 
       this.chart  = am4core.create("chartdiv",am4charts.XYChart);
       let title  =  this.chart.titles.create();
@@ -324,66 +314,5 @@ getChart(){
     }
 }
 
-
-
-
- /*  switchData(){
-    this.toggleBtn = !this.toggleBtn;
-    console.log(this.toggleBtn);
-    this.chart  = am4core.create("chartdiv",am4charts.XYChart);
-    let title  =  this.chart.titles.create();
-    title.text = "Total collection by movie";
-
-  
-    this.chart.colors.list = [
-      am4core.color("red"),
-      am4core.color("green"),
-      am4core.color("blue"),
-      am4core.color("purple"),
-      am4core.color("black"),
-      am4core.color("brown"),
-    ];
-   
-
-    
-
-
-    let xTitle;
-    if(this.toggleBtn === false){
-      this.chart.data = Monthdata;
-      xTitle = 'Month';
-    }
-    else{
-      this.chart.data = weekData;
-      xTitle = "Week"
-    }
-
-    let categoryAxis = this.chart.xAxes.push(new am4charts.CategoryAxis());
-      categoryAxis.title.text = xTitle;
-      categoryAxis.dataFields.category = "month";
-
-      let valueAxisY = this.chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxisY.title.text = "Total collection";
-      valueAxisY.renderer.minWidth = 20;
-
-      let seriesNames  = ["movie 1","movie 2","movie 3","movie 4"];
-
-      for(let i=0;i<4;i++){
-        let series = this.chart.series.push(new am4charts.LineSeries());
-        series.dataFields.categoryX  = "month";
-        series.dataFields.valueY = seriesNames[i];
-        series.name = seriesNames[i];
-      
-        let bullet  =  series.bullets.push(new am4charts.CircleBullet());
-        bullet.circle.strokeWidth = 2;
-        bullet.circle.radius = 4;
-        bullet.circle.fill = am4core.color("#fff");
-        
-        bullet.tooltipText = "Month : {categoryX} \n collection:{valueY} \n title: {name} ";
-      }
-
-      this.chart.legend  = new am4charts.Legend();
-
-  } */
 
 }

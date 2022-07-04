@@ -56,25 +56,18 @@ public uploadFinished = (event:any) => {
 }
 
 public returnImgPath = () => {
-
-  //return `https://localhost:7254/${serverPath}`;
- // var path =  this.mService.getMovieImagePath(this.response.dbPath);
  var path= this.mService.getMovieImagePath(this.response.dbPath);
   return path;
  }
 
  saveDetails(form:any){
-  //console.log(this.response.dbPath);
- //  console.log(form.value);
 
-   //this.movie.id = this.movieId
    this.movie.title = form.value.title;
    this.movie.ratings = form.value.ratings;
    this.movie.description = form.value.description;
    this.movie.releaseDate = form.value.releaseDate;
     this.movie.posterImgPath = this.response.dbPath;
-  //console.log(this.tagsControl.value);
- // console.log(this.disableSelect.value);
+
  if(this.disableSelect.value === true){
    this.movie.tags = this.tagsList.join();
  }
@@ -83,7 +76,7 @@ public returnImgPath = () => {
  }
    this.movie.isDeleted = false;
 
-   console.log(this.movie);
+  
 
    this.mService.insertMovie(this.movie).subscribe((res)=>{
     console.log(res);

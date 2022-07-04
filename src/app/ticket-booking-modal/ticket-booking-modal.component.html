@@ -1,9 +1,7 @@
 <h2 mat-dialog-title>Ticket Booking Controller</h2>
 <p *ngIf="selectedTheatreData.screenId">{{selectedTheatreData.theatreName}} ,{{selectedTheatreData.screenName}},{{selectedTheatreData.screeFromTime | date:'hh:mm a'}}</p>
 <mat-dialog-content>
-<!--     <app-ticket-booking-form 
-    [theatreDetails]="theatreData" 
-    ></app-ticket-booking-form> -->
+
     <mat-tab-group (selectedTabChange)="onChangeInTab($event)">
         <mat-tab  [label]="dateArray[i]" *ngFor="let x of selScreenDataByDate; let i = index">
        <mat-card  *ngFor="let screen of x;let j= index">

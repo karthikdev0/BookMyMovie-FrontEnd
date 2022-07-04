@@ -94,7 +94,7 @@ userModel:any;
        this.AuthUserRole = res.username[1],
        this.userService.username.next(this.AuthUsername);
        this.userService.role.next(this.AuthUserRole);
-       console.log(this.AuthUsername);
+      // console.log(this.AuthUsername);
        localStorage.setItem("username",this.AuthUsername);
        localStorage.setItem("role",this.AuthUserRole);
        this.router.navigate(['home']);
