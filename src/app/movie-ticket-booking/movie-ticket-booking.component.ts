@@ -46,7 +46,7 @@ ticketPrintArray:TicketSucess[]=[];
     private router: Router,
     private tService:TicketService
     ) { 
-      this.route.params.subscribe( params => console.log(params));
+      this.route.params.subscribe( params => {}  );
     }
 
   ngOnInit(): void {
@@ -76,12 +76,12 @@ ticketPrintArray:TicketSucess[]=[];
   getTheatreDetails(){
     this.tService.getTheatreDetails(this.movieId).subscribe( (res) => {
       this.theatreData =  res as [];
-      console.log(res);
+    //  console.log(res);
     });
   }
 
   recommendedId(id:number){
-    console.log(id);
+   // console.log(id);
     this.mId= id;
   }
 
@@ -101,8 +101,8 @@ ticketPrintArray:TicketSucess[]=[];
 
   ticketDetailsPrint(event:TicketSucess[]){
       this.ticketPrintArray = event ;
-      console.log(event);
-      console.log(this.ticketPrintArray);
+     // console.log(event);
+     // console.log(this.ticketPrintArray);
   }
 
 }

@@ -56,7 +56,7 @@ weekData = [
 
   switchData(){
     this.toggleBtn = !this.toggleBtn;
-    console.log(this.toggleBtn);
+   // console.log(this.toggleBtn);
     this.chart  = am4core.create("chartdiv",am4charts.XYChart);
     let title  =  this.chart.titles.create();
     title.text = "Total collection by movie";

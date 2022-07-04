@@ -23,7 +23,8 @@ export class MyReviewsComponent implements OnInit {
         User  = JSON.parse(userDetails);
    }
 
-   this.uService.getAllReviewsByUserId(User.userId).subscribe( (res) => {console.log(res)
+   this.uService.getAllReviewsByUserId(User.userId).subscribe( (res) => {
+    //console.log(res)
           this.myReviews =  res as  [];
   });
 

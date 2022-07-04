@@ -89,7 +89,7 @@ disableSelect  = new FormControl(true);
     this.getmovies();
     this.getAlltitles();
 
-    console.log(this.options);
+   // console.log(this.options);
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value)),
@@ -109,7 +109,7 @@ disableSelect  = new FormControl(true);
   unsortedData:Movie[]=[];
 
   removeSorting(){
-    console.log(this.unsortedData);
+   // console.log(this.unsortedData);
     this.mService.getAllMovies().subscribe( res  => {
       this.dataSource.connect().next(res);
     });
@@ -325,7 +325,7 @@ ToDeletePage(movie:Movie){
 //utility mehtods
 
 isTitleNull(){
-  console.log(this.movieFilter.title);
+ // console.log(this.movieFilter.title);
   if(this.movieFilter.title == ''){
     this.movieFilter.title = 'All';
   }

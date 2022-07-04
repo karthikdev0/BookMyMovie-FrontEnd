@@ -40,7 +40,7 @@ export class MovieTheatreDetailsComponent implements OnInit,OnChanges {
   
   this.movieId = changes['mId'].currentValue;
   this.route.params.subscribe( params => this.movieId= params['id']);
-   console.log(this.movieId);
+   //console.log(this.movieId);
    this.getCurrentMovie();
   }
 
@@ -82,7 +82,7 @@ this.toggleTheatreData = ! this.toggleTheatreData;
     dialogConfig.autoFocus = true;
     dialogConfig.data = this.availableTheatreDetails;
 
-    console.log(this.availableTheatreDetails);
+   // console.log(this.availableTheatreDetails);
     this.dialog.open(TicketBookingModalComponent,dialogConfig);
   }
 

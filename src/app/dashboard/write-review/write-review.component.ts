@@ -36,7 +36,7 @@ export class WriteReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieId = history.state.movieId;
-    console.log(history.state.movieId)
+  //  console.log(history.state.movieId)
     this.userId =  history.state.userId;
 
     this.starRating = this.reviewModel.rating;

@@ -51,7 +51,7 @@ export class InsertMovieRecordComponent implements OnInit {
 });
 
 public uploadFinished = (event:any) => {
-  console.log(event);
+  //console.log(event);
   this.response = event.body;
 }
 
@@ -79,7 +79,7 @@ public returnImgPath = () => {
   
 
    this.mService.insertMovie(this.movie).subscribe((res)=>{
-    console.log(res);
+   // console.log(res);
     alert('movie record inserted successfully ' + res.title);
     this.movieForm.reset();
    }

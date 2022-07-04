@@ -19,10 +19,10 @@ export class MovieReviewsComponent implements OnInit ,OnChanges {
   constructor(private userService:UserService) { }
   ngOnChanges(changes: SimpleChanges): void {
     this.currentMovieId = changes['movieId'].currentValue;
-    console.log(this.currentMovieId);
+   // console.log(this.currentMovieId);
 
     this.getMovieReviews();
-    console.log(this.myReviews);
+  //  console.log(this.myReviews);
   }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class MovieReviewsComponent implements OnInit ,OnChanges {
   getMovieReviews(){
     this.userService.getMovieReviewsByMovieId(this.currentMovieId).
     subscribe( res => {
-      console.log(res);
+    //  console.log(res);
       this.myReviews =  res as [];
     //  this.myReviews = this.myReviews.filter( (x) => x.rating >= 4)
     } )

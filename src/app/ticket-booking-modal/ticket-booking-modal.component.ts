@@ -72,7 +72,7 @@ confirmstr:string='';
     ) { 
 this.theatreData = data;
 this.theatreDetailsReceived = this.theatreData;
-console.log(this.theatreData);
+//console.log(this.theatreData);
   }
   ngOnChanges(changes: SimpleChanges): void {
     //  console.log(changes['theatreDetails'].currentValue);
@@ -101,7 +101,7 @@ close() {
 }
 
 getseatNumber(seat:any){
-  console.log(seat);
+//  console.log(seat);
  if(seat.isSelected  === true){
    this.selectedSeat.push(seat); 
   }
@@ -109,7 +109,7 @@ getseatNumber(seat:any){
 
  this.selectedSeat = this.selectedSeat.filter( x => x.isSelected === true)
  this.selectedSeat = this.selectedSeat.filter((item, i, ar) => ar.indexOf(item) === i)
- console.log(this.selectedSeat);
+ //console.log(this.selectedSeat);
   this.calculatePrice(this.selectedSeat)
  
 }
@@ -235,7 +235,7 @@ this.confirmstr='';
 }
 
 selectedScreen(id:number){
-console.log(id);
+//console.log(id);
 this.confirmstr='';
   this.price=0;
   this.seatsDataStr='';
@@ -329,7 +329,7 @@ setTicketData(){
       }
 var str  = this.selectedTheatreData.screenDate.split('-');
 var fmtstr = str[2] + '-'+str[1]+'-'+str[0];
-console.log(fmtstr)
+//console.log(fmtstr)
 
       this.ticketModel = {
         numOfseat : seatArray.length,
@@ -340,7 +340,7 @@ console.log(fmtstr)
         screenId:this.selectedTheatreData.screenId,
         seatNumber: seatArray
       }
-      console.log(this.ticketModel)
+     // console.log(this.ticketModel)
 
 
 }
@@ -351,7 +351,7 @@ bookTicket(){
   config.verticalPosition = 'top';
   config.duration = 5000;
     this.tService.ticketBooking(this.ticketModel).subscribe( (res) => {
-    console.log(res);
+   // console.log(res);
     var t:TicketSucess[]  = res as [];
     this.snackBar.open('Ticket booked successfully','x',config);
    // this.router.navigate(['ticket'],{state:t})
@@ -371,12 +371,12 @@ openCompDialog(data:string) {
       this.dialogRef.close()
       this.setTicketData();
       this.bookTicket();
-        console.log('yes');
+       // console.log('yes');
 
     }
     else if(res.event === 'no-option'){
       
-      console.log('no')
+    //  console.log('no')
      this.confirmstr='';
     //  this.price=0;
      // this.seatsDataStr='';

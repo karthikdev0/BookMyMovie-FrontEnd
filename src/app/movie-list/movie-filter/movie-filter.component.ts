@@ -81,17 +81,17 @@ movieFilter:movieFilter = {
 
 
   doFilter(){
-    console.log(this.ratings);
+    //console.log(this.ratings);
     this.movieFilter.title = this.title;
     this.isTitleNull();
     this.movieFilter.rating  = +this.ratings;
-console.log(this.allSelected.selected);
-console.log(this.tagsControl.value.length)
+//console.log(this.allSelected.selected);
+//console.log(this.tagsControl.value.length)
      if(this.allSelected.selected){
        this.movieFilter.tags = this.tagsList;
      }
      else{
-       console.log(this.tagsControl.value.length)
+      // console.log(this.tagsControl.value.length)
        if(this.tagsControl.value.length == 0){
         this.movieFilter.tags = this.tagsControl.value;
        }
@@ -100,7 +100,7 @@ console.log(this.tagsControl.value.length)
 
      
 
-console.log(this.movieFilter);
+//console.log(this.movieFilter);
 this.service.FilterMovieByParam(this.movieFilter).subscribe(
     res => {
     this.movies = res as [];
@@ -110,7 +110,7 @@ this.service.FilterMovieByParam(this.movieFilter).subscribe(
 }
 
 isTitleNull(){
-  console.log(this.movieFilter.title);
+ // console.log(this.movieFilter.title);
   if(this.movieFilter.title == ''){
     this.movieFilter.title = 'All';
   }

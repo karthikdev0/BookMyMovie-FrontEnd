@@ -103,12 +103,12 @@ confirmstr:string='';
 
  
   getseatNumber(seat:any){
-    console.log(seat);
+   // console.log(seat);
    if(seat.isSelected  === true){
      this.selectedSeat.push(seat); 
     }
 
-    console.log(this.selectedSeat.filter( x => x.isSelected === true));
+   // console.log(this.selectedSeat.filter( x => x.isSelected === true));
     this.calculatePrice(this.selectedSeat.filter( x => x.isSelected === true))
    
   }
@@ -170,7 +170,7 @@ dateArray:any[]=[];
   }
 
   selectedScreen(id:number){
-console.log(id);
+//console.log(id);
 let res = this.theatreDetailsReceived.find( x => x.screenId === id);
 if(res !== undefined){
   this.selectedTheatreData = res;

@@ -123,13 +123,18 @@ title:string='';
     movieId: id,
   userId:this.userDetails.userId
     }
-   this.userService.insertReview(this.reviewModel).subscribe( res => console.log(res));
+   this.userService.insertReview(this.reviewModel).subscribe( res => 
+   { 
+  //  console.log(res)
+   }
+   );
   }
 
   getUserRating(userId:number,movieId:number){
     this.userService.getMovieReviewByuserId(userId,movieId)
-    .subscribe( res => { console.log(res);
-            this.starRating = res.rating;
+    .subscribe( res => { 
+      //console.log(res);
+      this.starRating = res.rating;
     })
   }
 
