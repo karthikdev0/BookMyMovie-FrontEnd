@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieFilterComponent } from './movie-filter.component';
 
-describe('MovieFilterComponent', () => {
+/* describe('MovieFilterComponent', () => {
   let component: MovieFilterComponent;
   let fixture: ComponentFixture<MovieFilterComponent>;
 
@@ -23,3 +23,4 @@ describe('MovieFilterComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ */

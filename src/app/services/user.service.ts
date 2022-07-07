@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, Subject } from 'rxjs';
 import { login } from 'src/_interfaces/login.model';
 import { review } from 'src/_interfaces/review.model';
 import { user } from 'src/_interfaces/user.model';
@@ -17,8 +17,8 @@ export class UserService {
  //private Username :BehaviorSubject<string> = new BehaviorSubject<string>("");
  // dataUsername:Observable<string> = this.Username.asObservable();
 
- username = new Subject();
- role = new Subject();
+ username = new BehaviorSubject<string>('');
+ role = new BehaviorSubject<string>('');
  isLoggedIn = new BehaviorSubject<boolean>(false);
 
   
@@ -37,6 +37,12 @@ export class UserService {
  bookingUrl = 'https://localhost:7254/movieBooking/';  
  reviewUrl = 'https://localhost:7254/review/';
 
+//booking url
+ getUserTicketDetails(userId:number):Observable<any[]>{
+  return this.http.get<any[]>(this.bookingUrl+'getAllTickets/'+userId);
+}
+
+//review url
   insertReview(review:review):Observable<any>{
    return this.http.post<any>(this.reviewUrl +'addReview' ,review);
   }
@@ -55,6 +61,22 @@ export class UserService {
   }
 
 
+
+ 
+
+ 
+
+
+
+  //user endpoints 
+
+  getUserDetails():Observable<any>{
+    return this.http.get<any>(this.url + 'getUserDetails');
+  }
+  registerUserDetails(data:any):Observable<any>{
+    return this.http.post<any>(this.url+'addUser',data);
+  }
+
   insertUser(user:user):Observable<user>{
     return this.http.post<user>(this.url + 'addUser',user);
   }
@@ -62,27 +84,29 @@ export class UserService {
   getUserByUserName(userName:string):Observable<user>{
     return this.http.get<user>(this.url + 'getUserByName/' + userName);
   }
-  loginUser(data:login):Observable<any>{
-    const httpOptions = { headers : new HttpHeaders ( {'Content-Type':'application/json'})  };
-    return this.http.post<any>(this.authUrl +'login',data,httpOptions);
-  }
 
   getUserDetailsByUserName(userName:any):Observable<any>{
     return this.http.get<any>(this.url+'getUserDetailsByUserName?username='+userName);
   }
 
-  getUserTicketDetails(userId:number):Observable<any[]>{
-    return this.http.get<any[]>(this.bookingUrl+'getAllTickets/'+userId);
-  }
-
-  getUserDetails():Observable<any>{
-    return this.http.get<any>(this.url + 'getUserDetails');
-  }
+  //auth endpoints 
 
   registerUser(data:any):Observable<any>{
-    return this.http.post<any>(this.authUrl + 'register',data);
+    return this.http.post<any>(this.authUrl + 'register',data)
+    .pipe(catchError(this.handleError<any>(`user registration`)));
   }
-  registerUserDetails(data:any):Observable<any>{
-    return this.http.post<any>(this.url+'addUser',data);
+
+  loginUser(data:login):Observable<any>{
+    return this.http.post<any>(this.authUrl +'login',data)
+    .pipe(catchError(this.handleError<any>(`user login`)));
+  }
+  
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    };
   }
 }

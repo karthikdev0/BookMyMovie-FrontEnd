@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieRecommendationComponent } from './movie-recommendation.component';
 
-describe('MovieRecommendationComponent', () => {
+/* describe('MovieRecommendationComponent', () => {
   let component: MovieRecommendationComponent;
   let fixture: ComponentFixture<MovieRecommendationComponent>;
 
@@ -22,4 +22,4 @@ describe('MovieRecommendationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+}); */

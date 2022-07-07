@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StockChartComponent } from './stock-chart.component';
 
-describe('StockChartComponent', () => {
+/* describe('StockChartComponent', () => {
   let component: StockChartComponent;
   let fixture: ComponentFixture<StockChartComponent>;
 
@@ -22,4 +22,4 @@ describe('StockChartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+}); */

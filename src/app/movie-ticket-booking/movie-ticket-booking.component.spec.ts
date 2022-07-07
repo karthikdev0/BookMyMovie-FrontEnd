@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieTicketBookingComponent } from './movie-ticket-booking.component';
 
-describe('MovieTicketBookingComponent', () => {
+/* describe('MovieTicketBookingComponent', () => {
   let component: MovieTicketBookingComponent;
   let fixture: ComponentFixture<MovieTicketBookingComponent>;
 
@@ -23,3 +23,4 @@ describe('MovieTicketBookingComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ */

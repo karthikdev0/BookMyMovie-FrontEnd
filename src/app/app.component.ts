@@ -18,14 +18,14 @@ username:any;
 role:any;
 isLoggedIn : boolean = false;
 isDashboard :boolean  =  false;
-  constructor(private route:ActivatedRoute,private router:Router,private jwtHelper: JwtHelperService,private uService:UserService) {  
+  constructor(private router:Router,private jwtHelper: JwtHelperService,private uService:UserService) {  
   }
   ngOnInit(): void {
    // this.getUsername();
-  this.uService.username.subscribe( res => this.username = res);
-  this.uService.isLoggedIn.subscribe( res => this.isLoggedIn = res );
-this.username = localStorage.getItem("username");
-this.role  = localStorage.getItem("role");
+    this.uService.username.subscribe( res => this.username = res);
+    this.uService.isLoggedIn.subscribe( res => this.isLoggedIn = res );
+    this.username = localStorage.getItem("username");
+    this.role  = localStorage.getItem("role");
     this.checkLoginStatus();
   }
 
@@ -36,7 +36,6 @@ this.role  = localStorage.getItem("role");
     }
     else{
       this.isLoggedIn = false;
-      
     }
   }
   logOut() {
@@ -69,7 +68,7 @@ takeMetoUserDashboard(){
   if(this.isLoggedIn === true || this.isDashboard === false){
   //  if( this.router.url !== '/dashboard/'+this.username + '/charts'){
       this.isDashboard = !this.isDashboard;
-    this.router.navigate(['dashboard',localStorage.getItem("username"),'charts']);
+    this.router.navigate(['dashboard',localStorage.getItem("username")]);
   //  }
     
   }

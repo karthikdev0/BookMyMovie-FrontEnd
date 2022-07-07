@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from  '@angular/material/dialog';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { login } from 'src/_interfaces/login.model';
-import { user } from 'src/_interfaces/user.model';
-import { ErrorComponent } from '../error/error.component';
 import { UserService } from '../services/user.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,8 +34,8 @@ userModel:any;
   AuthUserRole:any;
 
   // form: FormGroup;
-  constructor(private  dialog:  MatDialog, private  router:  Router
-    ,private fb: FormBuilder,private userService:UserService,private jwtHelper:JwtHelperService) { }
+  constructor(private  router:  Router
+    ,private fb: FormBuilder,private userService:UserService) { }
  
   
 
@@ -54,10 +53,13 @@ userModel:any;
 
  
 
-  loginAuthentication(form: { value: any; }): void{
+  loginAuthentication(username: string,password: string): void{
   //  console.log(form.value);
-    this.loginModel.userName  = form.value.LuserName;
-    this.loginModel.password = form.value.Lpassword;
+   // this.loginModel.userName  = form.value.LuserName;
+   // this.loginModel.password = form.value.Lpassword;
+
+    this.loginModel.userName  =username;
+    this.loginModel.password = password;
    // console.log(this.loginModel);
 
     this.userService.loginUser(this.loginModel).subscribe(

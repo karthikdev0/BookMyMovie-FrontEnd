@@ -4,10 +4,10 @@
     <!-- <span><img  src="./assets/logo.png"  style="width:50px;"></span> -->
     <a   mat-button  routerLink="/home"  routerLinkActive="active"><mat-icon>home</mat-icon>Home</a>
     <a mat-button   routerLinkActive="active"   routerLink="/movie-list">Movie-List</a>
-    <a *ngIf="isLoggedIn && role === 'Admin'" mat-button  routerLinkActive="active" [routerLink]= "['dashboard',username,'charts'] "  
+    <a *ngIf="isLoggedIn" mat-button  routerLinkActive="active" [routerLink]= "['dashboard',username] "  
      >Dashboard</a>
-     <a *ngIf="isLoggedIn && role === 'Standard'" mat-button  routerLinkActive="active" [routerLink]= "['dashboard',username,'my-account'] "  
-     >Dashboard</a>
+<!--      <a *ngIf="isLoggedIn && role === 'Standard'" mat-button  routerLinkActive="active" [routerLink]= "['dashboard',username,'my-account'] "  
+     >Dashboard</a> -->
      <!--[ngStyle]="{'color':isDashboard?'blue':''}" -->
     <span class="example-spacer"></span>
 

@@ -9,7 +9,8 @@
                     <mat-card-title>Login</mat-card-title>
                     <mat-card-content>
                       <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
-                        <form [formGroup]="form" (ngSubmit)="loginAuthentication(form)" autocomplete="off">
+                        <form [formGroup]="form" 
+                        (ngSubmit)="loginAuthentication(form.value.LuserName,form.value.Lpassword)" autocomplete="off">
                             <div>
                                 <mat-form-field appearance="legacy">
                                     <mat-label>User Name:</mat-label>
