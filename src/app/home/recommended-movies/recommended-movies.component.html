@@ -20,9 +20,9 @@
                         <img class="poster-img" [src]="createImgPath(m.posterImgPath)" >
                     </mat-card-content>
                     <mat-card-footer>
-                        <mat-card-title class="mat-h3" style="padding:5px;" (click)="toTicketBookingPage(m.id)">
-                            {{m.title | uppercase}}
-                          </mat-card-title>
+                    <mat-card-title class="mat-title" style="padding:5px;" (click)="toTicketBookingPage(m.id)">
+                        {{m.title | uppercase}}
+                    </mat-card-title>
                     </mat-card-footer>
                 </mat-card>
     
@@ -56,7 +56,6 @@
                     </mat-card>
         
                 </div>
-                
             </div>
 
 

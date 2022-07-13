@@ -30,7 +30,6 @@ export class MovieService {
  
   getMovieImagePath(path:string){
     return this.ImgUrl+path;
-
   }
 
   getAllMovies():Observable<any[]>{

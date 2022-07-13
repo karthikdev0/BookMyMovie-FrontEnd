@@ -120,7 +120,7 @@ userModel:any;
 
 
 
-  // registration conmponent 
+  // registration component 
 
   hide = true;
   registrationForm = this.fb.group({
