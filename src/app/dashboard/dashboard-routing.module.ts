@@ -5,6 +5,7 @@ import { AllTicketDetailsComponent } from "./all-ticket-details/all-ticket-detai
 import { ChartsComponent } from "./charts/charts.component";
 import { LineChartComponent } from "./charts/line-chart/line-chart.component";
 import { PieChartComponent } from "./charts/pie-chart/pie-chart.component";
+import { ReviewChartComponent } from "./charts/review-chart/review-chart.component";
 import { StockChartComponent } from "./charts/stock-chart/stock-chart.component";
 import { DashboardComponent } from "./dashboard.component";
 import { EditMovieComponent } from "./edit-movie/edit-movie.component";
@@ -30,12 +31,14 @@ const routes:Routes = [
     {path:'charts/line-chart',component:LineChartComponent},
     {path:'charts/pie-chart',component:PieChartComponent},
     {path:'charts/stock-chart',component:StockChartComponent},
+    {path:'charts/review-chart',component:ReviewChartComponent},
     {path:'charts',component:ChartsComponent,
     
     children :[
       { path:'pie-chart',component:PieChartComponent },
       { path:'line-chart',component:LineChartComponent },
-      { path:'stock-chart',component:StockChartComponent }
+      { path:'stock-chart',component:StockChartComponent },
+      { path: 'review-chart', component:ReviewChartComponent}
     ]}
     ]
   },

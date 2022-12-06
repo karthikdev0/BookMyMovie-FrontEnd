@@ -15,7 +15,7 @@
         <p class="card-text description-txt">{{movie.description}}</p>
         <p class="card-text">Tags -- {{movie.tags.replaceAll(',',' ')}}</p>
         <p class="card-text"><small class="text-muted">Movie Rating  - {{movie.ratings}} , Movie Release Date  - {{movie.releaseDate | date}}</small></p>
-        <a mat-button >Rate now</a>
+        <a mat-button (click)="toWriteReview()" >Rate now</a>
         <a color="primary" mat-raised-button (click)="openTicketController()" >Book Ticket Now</a>
        </div>
      </div>

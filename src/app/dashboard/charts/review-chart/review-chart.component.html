@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col col-md-12"  id="chartdivpie"  [style.height.px]="500"></div>
+    </div>
+    
+</div> 
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4 col-sm-12">
+            <button mat-button (click)="resetChart()">Reset</button>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">Customer Reviews</div>
+                <div class="col-md-8 col-sm-6">
+                    <mat-button-toggle-group [value]="resetValue" class="toggle-flex-container"
+                     (change)="ratingFilter($event.value)" name="ratings" aria-label="choose rating">
+                        <mat-button-toggle value="4">4 & above</mat-button-toggle>
+                        <mat-button-toggle value="3">3 & above</mat-button-toggle>
+                        <mat-button-toggle value="2">2 & above</mat-button-toggle>
+                        <mat-button-toggle value="1">1 & above</mat-button-toggle>
+                      </mat-button-toggle-group>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12">
+    
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>rating</th>
+                        <th>title</th>
+                        <th>release date</th>
+                        <th>tags</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of tableData">
+                        <td>{{x.ratings}}</td>
+                        <td>{{x.title}}</td>
+                        <td>{{x.releaseDate | date}}</td>
+                        <td>{{x.tags}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+
+

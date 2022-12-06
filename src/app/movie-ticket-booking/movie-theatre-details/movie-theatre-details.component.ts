@@ -1,10 +1,12 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { ReviewModalComponent } from 'src/app/review-modal/review-modal.component';
 import { MovieService } from 'src/app/services/movie.service';
 import { TicketService } from 'src/app/services/ticket.service';
 import { TicketBookingModalComponent } from 'src/app/ticket-booking-modal/ticket-booking-modal.component';
 import { theatreDetails } from 'src/_interfaces/theatreDetails.model';
+import { review } from 'src/_interfaces/review.model';
 
 @Component({
   selector: 'app-movie-theatre-details',
@@ -84,6 +86,29 @@ this.toggleTheatreData = ! this.toggleTheatreData;
 
    // console.log(this.availableTheatreDetails);
     this.dialog.open(TicketBookingModalComponent,dialogConfig);
+  }
+
+  toWriteReview(){
+    let userDetails;
+    let details = localStorage.getItem('userdetails');
+    if(details != null){
+     userDetails =  JSON.parse(details);
+    }
+    const dialogConfig  = new MatDialogConfig();
+     let review :review={
+      reviewId: 0,
+      rating: 0,
+      review_Content: '',
+      movieId: this.movieId,
+      userId: userDetails.userId
+    } 
+    dialogConfig.autoFocus = true;
+    dialogConfig.width =  '600px',
+    dialogConfig.height =  '400px',
+    dialogConfig.data = {
+  reviewModel:review 
+    };
+    this.dialog.open(ReviewModalComponent,dialogConfig)
   }
 
 }

@@ -46,7 +46,9 @@ export class RegisterComponent implements OnInit {
     userName:['', [Validators.required,Validators.pattern("^[a-zA-Z0-9]{6,20}")]],
     dob: ['', [Validators.required]],
     gender: ['', [Validators.required]],
-    password:['', [Validators.required,Validators.pattern("^(?=.*[0-9])+(?=.*[a-z])(?=.*[A-Z])+(?=.*[@#$%^&+=])+(?=\\S+$).{8,20}$")]],
+    password:['', [Validators.required,
+/*       Validators.pattern("^(?=.*[0-9])+(?=.*[a-z])(?=.*[A-Z])+(?=.*[@#$%^&+=])+(?=\\S+$).{8,20}$") */
+    ]],
     confirmPassword:['', [Validators.required]]
   });
   
@@ -84,24 +86,38 @@ export class RegisterComponent implements OnInit {
 
  this.uService.registerUser(this.userData).subscribe(
    (res) => {
-          this.userModelId = res.id;
-          this.userDetailsData.userModelId = res.id;
+
+       // console.log("register user " + res);
+          this.userModelId = res;
+          this.userDetailsData.userModelId = res;
+          this.userDetailsData.firstName = form.value.firstName;
+          this.userDetailsData.lastName = form.value.lastName;
+          this.userDetailsData.email = form.value.email;
+          this.userDetailsData.gender = form.value.gender;
+          this.userDetailsData.dateOfBirth = form.value.dob;
+         // this.userDetailsData.userModelId = this.userModelId ;
+         
+         console.log(this.userDetailsData);
+         
+          this.uService.registerUserDetails(this.userDetailsData).subscribe(
+            (res) => {
+              console.log("register userdetails " + res);
+              
+            }
+          );
+
+          this.router.navigate(['login']);
+
+
+
    }
  );
 
-  this.userDetailsData.firstName = form.value.firstName;
-  this.userDetailsData.lastName = form.value.lastName;
-  this.userDetailsData.email = form.value.email;
-  this.userDetailsData.gender = form.value.gender;
-  this.userDetailsData.dateOfBirth = form.value.dob;
- // this.userDetailsData.userModelId = this.userModelId ;
+ 
 
-  this.uService.registerUserDetails(this.userDetailsData).subscribe(
-    (res) => {
-    //  console.log(res);
-      this.router.navigate(['login']);
-    }
-  );
+
+
+
 
 
 

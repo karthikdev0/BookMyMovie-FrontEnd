@@ -46,8 +46,12 @@ userModel:any;
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      LuserName: [null, [Validators.required, Validators.pattern("^[a-zA-Z0-9]{6,20}")]],
-      Lpassword: [null, [Validators.required, Validators.pattern("^(?=.*[0-9])+(?=.*[a-z])(?=.*[A-Z])+(?=.*[@#$%^&+=])+(?=\\S+$).{8,20}$")]],
+      LuserName: [null, [Validators.required, 
+        /* Validators.pattern("^[a-zA-Z0-9]{6,20}") */
+      ]],
+      Lpassword: [null, [Validators.required, 
+        /* Validators.pattern("^(?=.*[0-9])+(?=.*[a-z])(?=.*[A-Z])+(?=.*[@#$%^&+=])+(?=\\S+$).{8,20}$") */
+      ]],
     });
   }
 

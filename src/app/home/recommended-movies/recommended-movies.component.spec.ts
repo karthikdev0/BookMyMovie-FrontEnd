@@ -62,7 +62,7 @@ import { RecommendedMoviesComponent } from './recommended-movies.component';
 
 
   it('should make http request and updates movieList1 ,movieList2 , recommendedMoviesList property', () => {
-    expect(fixture.componentInstance.movieList1.length).toEqual(Movies.length);
+    expect(component.movieList1.length).toEqual(Movies.length);
     expect(fixture.componentInstance.movieList2.length).toEqual(Movies.length);
     expect(fixture.componentInstance.recommendedMoviesList.length).toEqual(Movies.length);
   });

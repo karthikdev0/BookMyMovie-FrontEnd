@@ -35,6 +35,10 @@ export class ChartsComponent implements OnInit {
     this.router.navigate(['../dashboard/'+'a' +'/charts/stock-chart']);
   }
 
+  toReviewChartPage(){
+    this.router.navigate(['../dashboard/'+'a' +'/charts/review-chart']);
+  }
+
   
  Monthdata  = [
   {"movie 2":900000,"movie 1":200000,"movie 3":234000,"movie 4": 120000,"month": "Jan"},
