@@ -190,7 +190,7 @@ export class StockChartComponent implements OnInit {
  
 
 
-
+ 
 
 
 

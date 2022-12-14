@@ -19,7 +19,7 @@ export class ReviewChartComponent implements OnInit ,AfterViewInit {
    tableData :any[]=[];
    tableDataCopy : any[]=[];
 
-   resetValue: string = '1';
+   resetValue: string = '0';
 
    chartData : any[]=[];
 
@@ -29,10 +29,10 @@ export class ReviewChartComponent implements OnInit ,AfterViewInit {
 
 
   resetChart(){
-    console.log(this.chartData);
+    //console.log(this.chartData);
     this.tableData = this.tableDataCopy;
-     this.resetValue = "1";
-    console.log(this.tableData);
+     this.resetValue = "0";
+   // console.log(this.tableData);
   }
 
   /* MatButtonToggleChange */
@@ -40,7 +40,15 @@ export class ReviewChartComponent implements OnInit ,AfterViewInit {
   ratingFilter(value:any){
         console.log(typeof value);
         this.resetValue = value;
-        this.tableData = this.tableDataCopy.filter( x => value <  x.ratings)
+        if(value === "0"){
+          this.tableData = this.tableDataCopy;
+          return;
+        }
+        this.tableData = this.tableDataCopy.filter( x => {
+        
+          return  x.ratings <= value && x.ratings >= value -1
+          //value <  x.ratings
+        })
   }
 
 
@@ -65,7 +73,11 @@ export class ReviewChartComponent implements OnInit ,AfterViewInit {
       pieSeries.dataFields.value = "count";
       pieSeries.dataFields.category = "rating";
 //pieSeries.labels.template.text = "{category}: {value.percent.formatNumber('#.#')}%";
-      pieSeries.slices.template.tooltipText = "rating {category} :{value.percent.formatNumber('#.#')}%";
+     // pieSeries.slices.template.tooltipText = "rating {category}-1 to {category} :{value.percent.formatNumber('#.#')}%";
+      
+      pieSeries.slices.template.tooltipHTML = `
+      rating {category} :{value.percent.formatNumber('#.#')}%
+      `;
       pieSeries.labels.template.text = "";
       pieSeries.colors.list = [
         am4core.color('#003f5c'),
@@ -103,12 +115,15 @@ export class ReviewChartComponent implements OnInit ,AfterViewInit {
         let context:any = ev.target.dataItem?.dataContext;
       //  console.log(context);
       //  console.log(this.tableDataCopy);
-        let data_sliced = this.tableDataCopy.filter( x => x.ratings === context.rating);
+        let data_sliced = this.tableDataCopy.filter( x => {
+          return  x.ratings <= context.rating && x.ratings >= context.rating -1
+        }  );
        // console.log(data_sliced);
         this.tableData = data_sliced;
 
-       let toggleBtnValue  =  Math.floor(context.rating);
-        console.log(typeof toggleBtnValue.toString());
+       let toggleBtnValue  =  Math.ceil(context.rating);
+      // console.log(typeof toggleBtnValue.toString());
+      console.log(toggleBtnValue.toString());
 
       // this.ratingFilter(toggleBtnValue.toString());
         this.resetValue = toggleBtnValue.toString();
@@ -121,7 +136,7 @@ export class ReviewChartComponent implements OnInit ,AfterViewInit {
   ngOnInit(): void {
 
     this.analyticService.getAll().subscribe( res => {
-      console.log(res);
+      //console.log(res);
 
     this.convert2DTo1D(res);
     this.convertToChartData(res);
@@ -141,7 +156,7 @@ export class ReviewChartComponent implements OnInit ,AfterViewInit {
 
     this.tableDataCopy = this.tableData;
 
-    console.log(this.tableData);
+   // console.log(this.tableData);
   }
 
   convertToChartData(res:any){
@@ -161,9 +176,72 @@ export class ReviewChartComponent implements OnInit ,AfterViewInit {
       //console.log(rate,length);
       
       this.chartData.push({rating : rate,count : length});
+     
     }
       console.log(this.chartData);
-    this.chart.data = this.chartData;
+      this.convertToRangeChartData(this.chartData);
+   // this.chart.data = this.chartData;
   }
+
+  convertToRangeChartData(res:any[]){
+        console.log(res);
+        let tmp:any[]=[];
+/*           for(let i=0;i<res.length;i++){
+              for(let j=i;j<res.length;j++){
+                if( Math.round(res[i].rating) === Math.round(res[j].rating) ){
+                      tmp.push({rating : Math.round(res[i].rating) , count : res[i].count  + res[j].count});
+                }
+              }
+          } */
+        tmp =   res.sort( (a,b) => {
+            return b.rating  - a.rating;
+          });
+
+          tmp =  tmp.map( x => { return { rating  : Math.ceil(x.rating), count : x.count}});
+         
+          console.log(tmp);
+         
+          const groupBy = (arr:any[], key:any) => {
+            const initialValue = {};
+            return arr.reduce((acc, cval) => {
+              const myAttribute = cval[key];
+              acc[myAttribute] = [...(acc[myAttribute] || []), cval]
+              return acc;
+            }, initialValue);
+          };
+          
+          const val = groupBy(tmp, "rating");
+          console.log("group by:", val);
+
+          let temp_final :any[]=[];
+           for(let key in val){
+            var obj  = val[key];
+            let rating =0;
+            let count  =0;
+            for(let prop in obj){
+              rating  =  obj[prop].rating;
+              count  = count + obj[prop].count;
+            }
+            console.log(rating , count);
+              temp_final.push({rating:rating,count:count});
+              rating =0;
+              count=0;
+          }
+          
+          console.log(temp_final);
+          this.chart.data = temp_final;
+       
+          
+        
+  }
+
+  ngOnDestroy(): void {
+       if(this.chart){
+        console.log('chart disposed');
+          this.chart.dispose();
+          
+      } 
+
+    }
 
 }

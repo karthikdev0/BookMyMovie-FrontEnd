@@ -16,10 +16,12 @@
                 <div class="col-md-8 col-sm-6">
                     <mat-button-toggle-group [value]="resetValue" class="toggle-flex-container"
                      (change)="ratingFilter($event.value)" name="ratings" aria-label="choose rating">
-                        <mat-button-toggle value="4">4 & above</mat-button-toggle>
-                        <mat-button-toggle value="3">3 & above</mat-button-toggle>
-                        <mat-button-toggle value="2">2 & above</mat-button-toggle>
-                        <mat-button-toggle value="1">1 & above</mat-button-toggle>
+                        <mat-button-toggle value="5">4.1 to 5</mat-button-toggle>
+                        <mat-button-toggle value="4">3.1 to 4</mat-button-toggle>
+                        <mat-button-toggle value="3">2.1 to 3</mat-button-toggle>
+                        <mat-button-toggle value="2">1.1 to 2</mat-button-toggle>
+                        <mat-button-toggle value="1">0 to 1</mat-button-toggle>
+                        <mat-button-toggle value="0">All</mat-button-toggle>
                       </mat-button-toggle-group>
                 </div>
             </div>

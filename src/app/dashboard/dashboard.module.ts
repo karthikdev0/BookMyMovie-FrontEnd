@@ -19,6 +19,9 @@ import { UploadComponent } from "./insert-movie-record/movie/upload/upload.compo
 import { MyAccountComponent } from "./my-account/my-account.component";
 import { MyReviewsComponent } from "./my-reviews/my-reviews.component";
 import { ReviewChartComponent } from './charts/review-chart/review-chart.component';
+import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
+import { MovieCollectionChartsComponent } from './charts/movie-collection-charts/movie-collection-charts.component';
+import { ChartsDashboardComponent } from './charts/charts-dashboard/charts-dashboard.component';
 
 
 export function tokenGetter() {
@@ -40,6 +43,9 @@ export function tokenGetter() {
         MyAccountComponent,
         MyReviewsComponent,
         ReviewChartComponent,
+        BarChartComponent,
+        MovieCollectionChartsComponent,
+        ChartsDashboardComponent,
     ],
     imports:[ 
         CommonModule,
