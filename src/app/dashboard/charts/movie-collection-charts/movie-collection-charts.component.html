@@ -1,0 +1,9 @@
+<mat-slide-toggle
+class="mt-3 ml-2 mr-2 mb-3"
+color="primary"
+[checked]="isChecked"
+(change)="slideToggle($event.checked)"
+>
+{{checkedValue}}
+</mat-slide-toggle>
+<router-outlet></router-outlet>
