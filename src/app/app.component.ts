@@ -53,7 +53,7 @@ isDashboard :boolean  =  false;
   const token  = localStorage.getItem("token");
   if (token && !this.jwtHelper.isTokenExpired(token)) {
   //  this.isLoggedIn = true;
-    this.router.navigate(['dashboard',localStorage.getItem("username")]);
+    this.router.navigate(['dashboard']);
    // return true;
   }
   else {
@@ -63,12 +63,12 @@ isDashboard :boolean  =  false;
 }
 
 takeMetoUserDashboard(){
-  console.log('/dashboard/'+this.username + '/charts');
+  console.log('/dashboard/charts');
   console.log(this.isDashboard);
   if(this.isLoggedIn === true || this.isDashboard === false){
   //  if( this.router.url !== '/dashboard/'+this.username + '/charts'){
       this.isDashboard = !this.isDashboard;
-    this.router.navigate(['dashboard',localStorage.getItem("username")]);
+    this.router.navigate(['dashboard']);
   //  }
     
   }

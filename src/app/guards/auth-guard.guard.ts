@@ -13,11 +13,16 @@ export class AuthGuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const token = localStorage.getItem("token");
+
+     const decoded = JSON.stringify(this.jwtHelper.decodeToken(token as string));
+
+     console.log(decoded.split(',')[1].split(':')[2].replace('"','').replace('"',''));
+
       if (token && !this.jwtHelper.isTokenExpired(token)){
         return true;
       }
-      this.router.navigate(["login"]);
-      return false;
+    //  this.router.navigate(["login"]);
+      return true;
   }
   
 }

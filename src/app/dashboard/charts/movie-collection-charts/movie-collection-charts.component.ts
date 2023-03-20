@@ -12,7 +12,7 @@ export class MovieCollectionChartsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isChecked = true;
-   this.router.navigate(['../dashboard/'+'a' +'/charts/movie-collection-chart/bar']);
+   this.router.navigate(['../dashboard/charts/movie-collection-chart/bar']);
    /* this.router.navigate(['../dashboard/'+'a' +'/charts/line']); */
   }
 
@@ -22,12 +22,12 @@ export class MovieCollectionChartsComponent implements OnInit {
   slideToggle(value: boolean){
       if(value ===  false){
         this.checkedValue = 'Line';
-        this.router.navigate(['../dashboard/'+'a' +'/charts/movie-collection-chart/line']);
+        this.router.navigate(['../dashboard/charts/movie-collection-chart/line']);
        //this.router.navigate(['../dashboard/'+'a' +'/charts/line']);
       }
       else{
         this.checkedValue = 'Bar';
-        this.router.navigate(['../dashboard/'+'a' +'/charts/movie-collection-chart/bar']);
+        this.router.navigate(['../dashboard/charts/movie-collection-chart/bar']);
         //this.router.navigate(['../dashboard/'+'a' +'/charts/bar']);
       }
   }

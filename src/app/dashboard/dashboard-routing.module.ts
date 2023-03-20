@@ -47,7 +47,7 @@ const routes:Routes = [
       { path:'stock-chart',component:StockChartComponent },
       { path: 'review-chart', component:ReviewChartComponent},
 /*       { path:'line' , component:LineChartComponent},
-      { path: 'bar' , component:BarChartComponent}, */
+      { path: 'bar' , component:BarChartComponent},  */
       {path : 'movie-collection-chart',component:MovieCollectionChartsComponent ,
       children :[
         { path : 'line',component:LineChartComponent },

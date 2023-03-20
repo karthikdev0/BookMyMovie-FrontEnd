@@ -15,20 +15,20 @@ export class ChartsDashboardComponent implements OnInit {
 
   
   toLineChartPage(){
-    this.router.navigate(['../dashboard/'+'a' +'/charts/line-chart']);
+    this.router.navigate(['../dashboard/charts/line-chart']);
   }
   toPieChartPage(){
-    this.router.navigate(['../dashboard/'+'a' +'/charts/pie-chart']);
+    this.router.navigate(['../dashboard/charts/pie-chart']);
   }
   toStockChartPage(){
-    this.router.navigate(['../dashboard/'+'a' +'/charts/stock-chart']);
+    this.router.navigate(['../dashboard/charts/stock-chart']);
   }
 
   toReviewChartPage(){
-    this.router.navigate(['../dashboard/'+'a' +'/charts/review-chart']);
+    this.router.navigate(['../dashboard/charts/review-chart']);
   }
   toMovieCollectionChartPage(){
-    this.router.navigate(['../dashboard/'+'a' +'/charts/movie-collection-chart']);
+    this.router.navigate(['../dashboard/charts/movie-collection-chart']);
   }
 
 }

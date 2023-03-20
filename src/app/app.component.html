@@ -4,7 +4,7 @@
     <!-- <span><img  src="./assets/logo.png"  style="width:50px;"></span> -->
     <a   mat-button  routerLink="/home"  routerLinkActive="active"><mat-icon>home</mat-icon>Home</a>
     <a mat-button   routerLinkActive="active"   routerLink="/movie-list">Movie-List</a>
-    <a *ngIf="isLoggedIn" mat-button  routerLinkActive="active" [routerLink]= "['dashboard',username] "  
+    <a *ngIf="isLoggedIn" mat-button  routerLinkActive="active" [routerLink]= "['dashboard'] "  
      >Dashboard</a>
 <!--      <a *ngIf="isLoggedIn && role === 'Standard'" mat-button  routerLinkActive="active" [routerLink]= "['dashboard',username,'my-account'] "  
      >Dashboard</a> -->

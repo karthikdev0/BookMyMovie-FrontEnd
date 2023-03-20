@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'ticket',component:TicketComponent},
   {path:'single-ticket',component:SingleBookedTicketComponent},
-  { path: 'dashboard/:admin',
+  { path: 'dashboard',
    loadChildren : () => import('./dashboard/dashboard.module').then( m => m.DashboardModule) ,
   },
   {
